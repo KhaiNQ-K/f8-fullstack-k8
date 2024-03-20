@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đặt hàng</title>
+  </head>
+  <style>
+    span {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .input,
+    select {
+      padding: 10px;
+      display: inline-block;
+      width: 90%;
+      border: 1px solid #ccc;
+    }
+    select {
+      width: 93%;
+    }
+    button {
+      display: inline-block;
+      margin-top: 10px;
+      border: none;
+      padding: 10px 20px;
+      background-color: cornflowerblue;
+      color: white;
+      font-size: 16px;
+    }
+    button:hover {
+      cursor: pointer;
+      opacity: 0.9;
+    }
+    p {
+      width: 50%;
+    }
+  </style>
+  <body>
+    <div>
+      <h2>Try a free sample</h2>
+      <p>
+        Sign up to get a coupon you can redeem at your nearest Dancing Goat cafe
+        for a sample of the Colombia Carlos Imbachi coffee. We'll also make sure
+        you don't miss out on news introducing the new coffees that we add to
+        our store regularly.
+      </p>
+      <div>
+        <form action="#!">
+          <table width="100%">
+            <tr>
+              <td>
+                <span>First name</span>
+              </td>
+              <td>
+                <span>Last name</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input class="input" type="text" />
+              </td>
+              <td>
+                <input class="input" type="text" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>Email address</span>
+              </td>
+              <td>
+                <span>Address</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input class="input" type="text" />
+              </td>
+              <td>
+                <input class="input" type="text" />
+              </td>
+            </tr>
+            <tr>
+              <td><span>City</span></td>
+              <td><span>State(optional)</span></td>
+            </tr>
+            <tr>
+              <td><input class="input" type="text" /></td>
+              <td><input class="input" type="text" /></td>
+            </tr>
+            <tr>
+              <td><span>ZIP code</span></td>
+              <td><span>Country</span></td>
+            </tr>
+            <tr>
+              <td><input class="input" type="text" /></td>
+              <td>
+                <select>
+                  <option value="VN">Viet Nam</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+          <div style="text-transform: uppercase">
+            <button type="submit">Send me free coffee</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
