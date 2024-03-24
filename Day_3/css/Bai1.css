@@ -1,0 +1,49 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1rem;
+}
+.contact {
+  padding: 10px 20px;
+}
+.contact-title {
+  text-transform: uppercase;
+  position: relative;
+}
+.contact-title::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  display: inline-block;
+  width: 50px;
+  height: 3px;
+  background-color: rgb(238, 206, 22);
+  border-radius: 10px;
+}
+table {
+  width: 100%;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 5px;
+
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+input {
+  height: 20px;
+}
+button {
+  border: none;
+  background-color: rgb(113, 243, 243);
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
