@@ -1,0 +1,33 @@
+.content {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.size {
+  padding: 15px 50px;
+  background: rgb(70, 97, 166);
+  color: #fff;
+  font-weight: 100;
+  font-size: 18px;
+}
+.title {
+  font-size: 40px;
+}
+.title .highlight {
+  font-weight: 700;
+  color: rgb(78, 151, 241);
+}
+p {
+  font-size: 20px;
+}
+.btn {
+  border: none;
+  padding: 20px 50px;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  margin-right: 20px;
+  margin-top: 20px;
+}
