@@ -1,0 +1,50 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+}
+.footer {
+  padding: 10px 20px 20px 20px;
+  background-color: #334455;
+  border-radius: 10px;
+}
+.footer h2 {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: bold;
+}
+.footer h2 .highlight {
+  color: #e5980a;
+}
+.footer p {
+  color: #fff;
+}
+.footer .subcribe-form .input {
+  display: inline-block;
+  width: 150px;
+  border: none;
+  padding: 10px 25px 10px 8px;
+  border-radius: 3px;
+  font-size: 1.6rem;
+}
+.footer .subcribe-form button {
+  border: none;
+  border-radius: 3px;
+  margin-left: 10px;
+  padding: 10px 20px;
+  font-size: 1.6rem;
+}
+.footer .subcribe-form button:hover {
+  cursor: pointer;
+}
+.footer:hover .input::placeholder {
+  color: #e5980a;
+}
+.footer:hover .input {
+  background-color: #ddd;
+}
+.footer:hover button {
+  background-color: #e5980a;
+  color: white;
+}

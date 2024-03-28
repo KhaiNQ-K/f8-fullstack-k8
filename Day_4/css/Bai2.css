@@ -1,0 +1,53 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+}
+h1,
+h2 {
+  margin: 0;
+}
+.form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+.title-child {
+  font-size: 4rem;
+  font-family: "Bebas Neue", sans-serif;
+  color: #392517;
+  margin-bottom: 40px;
+}
+.title {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #392517;
+  font-family: "Alfa Slab One", sans-serif;
+  margin-bottom: 20px;
+}
+
+.form-input {
+  width: 600px;
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.input {
+  width: calc(50% - 35px - 1px);
+  padding: 15px 25px 15px 10px;
+  border: 1px solid #ccc;
+  color: #392517;
+  font-weight: bold;
+  font-size: 2rem;
+  font-family: "Bebas Neue", sans-serif;
+}
+button {
+  width: 50%;
+  background: #af322a;
+  color: #fff;
+  font-size: 1.6rem;
+  font-family: "Alfa Slab One", sans-serif;
+}
