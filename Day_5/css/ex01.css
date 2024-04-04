@@ -39,3 +39,7 @@ span {
 .foot {
   font-size: 1.2rem;
 }
+a {
+  text-decoration: none;
+  color: #000;
+}

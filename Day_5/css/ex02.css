@@ -11,16 +11,14 @@ input {
   padding: 5px 10px;
   background-color: #d95925;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 .hide-item {
   display: none;
 }
-#input_1:checked ~ .list .item_1 > .hide-item,
-#input_2:checked ~ .list .item_2 > .hide-item,
-#input_3:checked ~ .list .item_3 > .hide-item,
-#input_1:checked ~ .list .item_1 + .hide-item,
-#input_2:checked ~ .list .item_2 + .hide-item,
-#input_3:checked ~ .list .item_3 + .hide-item {
+#input_1:checked ~ .list .tab_1 .hide-item,
+#input_2:checked ~ .list .tab_2 .hide-item,
+#input_3:checked ~ .list .tab_3 .hide-item {
   display: inline-block;
 }
 #input_1:checked ~ .list .item_1 > .show-item,
