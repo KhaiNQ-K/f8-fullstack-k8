@@ -35,7 +35,7 @@ a {
 .login-wrapper {
   display: flex;
   background-color: #fefefe;
-  width: 800px;
+  width: 1000px;
   height: 500px;
   border-radius: 10px;
   box-shadow: 2px -2px 19px 4px #ccc;
@@ -128,8 +128,8 @@ a {
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
-  padding-left: 30px;
-  padding-right: 30px;
+  margin-left: 60px;
+  margin-right: 60px;
 }
 .form__heading {
   font-size: 2.5rem;
