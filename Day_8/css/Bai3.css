@@ -77,15 +77,24 @@ a {
   display: flex;
   flex-wrap: wrap;
 }
+.product-link {
+  display: block;
+  width: calc(100% / 3 - 20px);
+}
 .product-item {
   color: #fff;
   position: relative;
   margin: 0 20px 20px 0;
   box-shadow: 1px 1px 8px 1px #ccc;
-  width: calc(100% / 3 - 20px);
   height: 300px;
   border-radius: 5px;
   background: url("../img/banner02.jpg") no-repeat center center / cover;
+}
+.product-item:hover {
+  cursor: pointer;
+}
+.product-item:hover .overlay {
+  opacity: 0.2;
 }
 .overlay {
   position: absolute;
