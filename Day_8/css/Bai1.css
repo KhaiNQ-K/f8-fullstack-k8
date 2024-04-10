@@ -24,6 +24,12 @@ body {
   border: 1px solid #ccc;
   left: 14%;
 }
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #ccc;
+  opacity: 0.2;
+}
 .modal {
   padding: 20px 30px;
 
