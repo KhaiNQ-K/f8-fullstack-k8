@@ -33,18 +33,40 @@ ol {
 }
 .award__item {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 40px;
   padding-bottom: 20px;
+  cursor: pointer;
+}
+.award__item:hover .award__item-year {
+  transform: translateX(calc(-100% - 80px));
+  text-align: right;
+}
+
+.award__item:hover .award__item-left {
+  transform: translateX(calc(100% + 80px));
+  text-align: left;
+  align-items: flex-start;
+}
+.award__item:hover .award__item-badge {
+  color: #fff;
+  background: rgb(153, 90, 19);
 }
 .award__item-left {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   text-align: right;
+  width: fit-content;
+  transition: all 0.8s ease-in-out;
+}
+
+.award__item-year {
+  transition: all 0.8s ease-in-out;
 }
 .award__item-heading {
   font-family: "Space Grotesk", Arial, sans-serif;
+  line-height: 1;
 }
 .award__item-desc {
   font-size: 1.4;
@@ -88,19 +110,43 @@ ol {
 }
 .award__image {
   position: relative;
-  padding: 0 0 40px 150px;
+  padding: 0 0 100px 150px;
 }
 .award__img {
   width: 500px;
-  height: 600px;
+  height: 500px;
   object-fit: cover;
 }
 .award__img-high {
+  position: absolute;
+  background: url("../img/award.jpg") no-repeat center center / cover;
   left: 0;
   bottom: 0;
-  position: absolute;
   width: 300px;
-  height: 500px;
+  height: 450px;
+}
+.award__img-child {
+  position: absolute;
+  background: #4c63b7;
+  inset: 10px;
+}
+.award__img-desc {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  bottom: 30px;
+  right: 30px;
+  color: #fff;
+}
+.award__img-count {
+  background: url("../img/award.jpg") no-repeat center center / cover;
+  color: transparent;
+  background-clip: text;
+  font-size: 6rem;
+}
+.award__img-text {
+  font-size: 1.6rem;
 }
 .award__img-low {
   top: 0;

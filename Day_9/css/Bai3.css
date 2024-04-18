@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+}
+body {
+  font-size: 1.6rem;
+  font-family: "Inter", Helvetica, sans-serif;
+  height: 2000px;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+input {
+  outline: none;
+  border: none;
+}
+.section-form {
+  padding: 40px 40px;
+}
+.container {
+  width: calc(100% - 80px);
+  margin: 0 auto;
+  height: 100%;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form__heading {
+  font-size: 3rem;
+}
+.form__desc {
+  margin-top: 20px;
+  color: #777;
+}
+.form {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  max-width: 800px;
+  width: 100%;
+}
+.row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.input-form {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border: none;
+  font-size: 1.6rem;
+  color: #777;
+}
+
+.input__field:focus + .input__label,
+.input__field:valid + .input__label {
+  transform: translateY(-20px);
+  font-size: 1.2rem;
+}
+.input__field:focus,
+.input__field:valid {
+  border: 1px solid #1986cf;
+}
+
+.input__field {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 10px 20px 0;
+  border: 2px solid #7777771e;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 2px rgba(106, 106, 106, 0.1);
+  overflow: hidden;
+}
+.input__label-required::after {
+  content: "*";
+  position: absolute;
+  right: -10px;
+  top: 0;
+}
+.input__label {
+  position: absolute;
+  pointer-events: none;
+  color: #777;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  transition: all 0.4s ease-in-out;
+}
+.select__field {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #7777771e;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 16px;
+  padding-right: 20px;
+  font-size: inherit;
+  color: inherit;
+  appearance: none;
+}
+.select__field option:disabled {
+  color: #333;
+}
+.select-arrow {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.row .text-area {
+  height: 100%;
+  min-height: 200px;
+  width: 100%;
+}
+.text-area__field {
+  resize: none;
+  padding: 35px 20px 0;
+  outline: none;
+}
+.text-area .input__label {
+  top: 15%;
+}
+.btn-submit {
+  text-align: center;
+  outline: none;
+  background-color: #4c76d8;
+  color: #fff;
+  width: 160px;
+  height: 50px;
+  border-radius: 999px;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.btn-submit:hover {
+  opacity: 0.8;
+}
