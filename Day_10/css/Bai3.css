@@ -112,6 +112,7 @@ body {
   top: 80px;
 }
 .envelope-shadow {
+  margin: 0 auto;
   margin-top: 30px;
   background-color: #000;
   filter: blur(10px);
@@ -136,6 +137,7 @@ body {
 } */
 .envelope-wrapper:hover {
   translate: 0 20%;
+  cursor: pointer;
 }
 .envelope-wrapper:hover > .envelope::before {
   z-index: 0;
@@ -150,4 +152,5 @@ body {
 }
 .envelope-wrapper:hover > .envelope-shadow {
   transform: translateY(20px);
+  width: 80%;
 }
