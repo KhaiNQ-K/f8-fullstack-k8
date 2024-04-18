@@ -1,0 +1,118 @@
+:root {
+  --primary-color: #05a8f5;
+  --primary-text: #fff;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+}
+body {
+  font-size: 1.6rem;
+  background-color: var(--primary-color);
+  color: var(--primary-text);
+  height: 2000px;
+}
+ul {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.container {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content {
+  position: absolute;
+  right: 80px;
+  font-size: 3.2rem;
+  width: 600px;
+}
+
+.desc {
+  margin-top: 30px;
+  font-size: 3rem;
+  font-weight: 100;
+}
+.desc-change {
+  font-size: 2rem;
+}
+.box-modal {
+  position: fixed;
+  inset: 0;
+  background: var(--primary-text);
+  color: var(--primary-color);
+  padding: 20px 0;
+  overflow: hidden;
+  width: 80px;
+  height: 80px;
+  border-bottom-right-radius: 999px;
+  transition: all 0.4s ease;
+}
+.modal__header {
+  position: absolute;
+  top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 3rem;
+  margin-left: 20px;
+  rotate: 0deg;
+  transition: rotate 0.4s ease;
+}
+.modal__header:hover {
+  cursor: pointer;
+}
+.modal__header-inside {
+  visibility: hidden;
+}
+.modal__header-outside {
+  visibility: visible;
+}
+.modal-body {
+  visibility: hidden;
+}
+.navbar__list {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.navbar__link {
+  display: block;
+  padding: 5px 100px 5px 40px;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+.navbar__link:hover {
+  cursor: pointer;
+  background: #ccc;
+  color: #000;
+}
+#checkbox-modal:checked ~ .box-modal .modal__header {
+  rotate: 360deg;
+}
+#checkbox-modal:checked ~ .box-modal .modal__header-outside {
+  visibility: hidden;
+}
+#checkbox-modal:checked ~ .box-modal .modal__header-inside {
+  visibility: visible;
+}
+#checkbox-modal:checked ~ .box-modal .modal-body {
+  visibility: visible;
+}
+#checkbox-modal:checked ~ .box-modal {
+  border-bottom-right-radius: 0;
+  width: 100%;
+  height: 100%;
+}
