@@ -78,6 +78,9 @@ a {
   max-width: 50%;
   margin: 0 auto;
 }
+.logo__img {
+  width: auto;
+}
 /* Header */
 .header {
   /* min-height: 100vh; */
@@ -215,6 +218,7 @@ a {
 }
 .text-highlight {
   color: var(--primary-color);
+  font-weight: 500;
 }
 .hero__desc {
   margin-top: 50px;
@@ -470,9 +474,10 @@ a {
   font-size: 16px;
   line-height: 26px;
   color: #888888;
+  margin-top: 30px;
 }
 .footer__desc {
-  margin-top: 25px;
+  margin-top: 15px;
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 1.625;
