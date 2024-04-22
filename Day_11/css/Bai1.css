@@ -287,6 +287,8 @@ a {
 }
 
 .service__list {
+  max-width: 1076px;
+  margin-inline: auto;
   margin-block: 92px 20px;
   display: flex;
   justify-content: center;
@@ -295,7 +297,7 @@ a {
 }
 .service__item {
   position: relative;
-  /* width: calc(100% / 3 - 65px); */
+  width: calc(100% / 3 - 65px);
   /* height: 328px; */
 }
 .service__content {
