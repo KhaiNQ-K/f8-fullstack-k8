@@ -287,7 +287,6 @@ a {
 }
 
 .service__list {
-  width: 1296px;
   margin-block: 92px 20px;
   display: flex;
   justify-content: center;
