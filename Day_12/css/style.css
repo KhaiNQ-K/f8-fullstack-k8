@@ -15,9 +15,9 @@
   --border-color: #eedcdc !important;
   --border-color2: #ddedf4 !important;
   --border-color3: #31c3e0 !important;
-  --bs-font-size: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
-    "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
+  --bs-font-size: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 html {
   font-size: 10px;
@@ -94,7 +94,6 @@ img {
   text-transform: capitalize;
   color: var(--text-color2);
   max-width: 50%;
-  margin: 0 auto;
 }
 /* Header */
 .header {
@@ -310,6 +309,7 @@ img {
 }
 .service__heading {
   margin-top: 8px;
+  margin: 0 auto;
 }
 .service-wrap {
   margin: 60px 0 20px;
@@ -389,6 +389,186 @@ img {
   line-height: 1.79;
   color: var(--text-color3);
   max-width: 90%;
+}
+/* Feature  */
+.feature {
+  padding: 50px 0;
+}
+.feature__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.feature__left {
+  width: 56.51%;
+  padding: 0 12px;
+}
+.feature__right {
+  padding: 0 12px;
+  width: 43.48%;
+}
+.feature__img {
+  width: 100%;
+}
+
+/* Feature 1 */
+.feature__sub-heading {
+  color: #03a66b;
+}
+.feature__heading {
+  margin: 8px 0 22px;
+  max-width: 75%;
+}
+.feature__desc {
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.67;
+  color: #676767;
+  max-width: 70%;
+}
+.feature__btn {
+  margin: 50px 0 20px;
+}
+
+/* Feature 2  */
+.feature__sub-heading--second {
+  color: #f9ba45;
+}
+.feature__heading--second {
+  max-width: 90%;
+}
+.feature__second-media {
+  width: 50%;
+}
+.feature__second-content {
+  width: 50%;
+}
+/* Install */
+.install {
+  padding: 100px 0;
+  background: var(--secondary-bg);
+}
+.install__inner {
+  display: flex;
+  flex-wrap: wrap;
+}
+.install__media {
+  width: 50%;
+  padding: 0 12px;
+}
+.install__img {
+  margin: 0 auto;
+}
+.install__content {
+  width: 50%;
+  padding: 0 12px;
+  margin-top: 80px;
+}
+.install__heading {
+  margin: 8px 0px 22px 0;
+  font-weight: 700;
+  color: #2e2e2e;
+  max-width: 80%;
+}
+.install__desc {
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.67;
+  max-width: 80%;
+  color: var(--text-color3);
+}
+.install__cta {
+  margin-top: 80px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.install__btn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 200px;
+  font-weight: 500;
+  font-size: 2rem;
+  color: var(--text-color2);
+  padding: 18px 2px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+/* Footer */
+.footer {
+  padding-top: 50px;
+}
+.footer .row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px 0 60px;
+  border-bottom: 1px solid rgba(236, 236, 236, 0.25);
+}
+.footer .row .col {
+  width: 22.22%;
+  padding: 0 12px;
+  margin: 30px 0 10px;
+}
+.footer .row .col:first-child {
+  width: 33.33%;
+  margin-top: 20px;
+}
+.footer__desc {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.625;
+  color: #888888;
+  max-width: 75%;
+  margin: 25px 0 10px 0;
+}
+.footer__title {
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 1.11;
+  letter-spacing: -0.01em;
+  color: var(--text-color2);
+}
+.footer__list {
+  margin-top: 30px;
+}
+.footer__link {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.5;
+  color: var(--text-color3);
+}
+.footer__link:hover {
+  color: var(--text-color1) !important;
+}
+.footer .row .col:last-child .footer__desc {
+  max-width: 100%;
+  margin-top: 30px;
+}
+.copyright {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.copyright {
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.72;
+  color: #8c8c8c;
+  padding: 0 12px;
+}
+.copyright .right {
+  display: flex;
+}
+.copyright .right .footer__link {
+  font-size: inherit;
+  font-weight: 500;
+  line-height: 1.72;
+  margin: 0 10px;
 }
 /* Responsive */
 
@@ -509,6 +689,61 @@ img {
     top: 15px;
     left: 38px;
   }
+  /* Feature */
+  .feature__inner {
+    justify-content: flex-start;
+  }
+  .feature__left {
+    width: 100%;
+  }
+  .feature__right {
+    width: 100%;
+  }
+  /* Feature 2 */
+  .feature__second-media {
+    order: 0;
+  }
+  .feature__second-content {
+    order: 1;
+  }
+  /* Install */
+  .install__media {
+    width: 100%;
+  }
+  .install__content {
+    width: 100%;
+  }
+  .install__heading {
+    max-width: 90%;
+  }
+  .install__desc {
+    font-size: 1.6rem;
+    max-width: 90%;
+  }
+  .install__btn {
+    font-size: 1.6rem;
+    padding: 12px 2px;
+  }
+  /* Footer */
+  .footer .row {
+    align-items: center;
+    justify-content: center;
+  }
+  .footer .row .col {
+    min-width: 100%;
+    text-align: center;
+  }
+  .footer .row .col .logo__link .logo__img {
+    margin: 0 auto;
+  }
+  .footer__desc {
+    max-width: 100%;
+    font-size: 1.4rem;
+  }
+  .footer__link {
+    font-size: 1.4rem;
+    line-height: 2.86;
+  }
 }
 @media screen and (max-width: 990.98px) {
   .header__right {
@@ -541,6 +776,13 @@ img {
     top: -3px;
     left: 38px;
   }
+  .feature__heading {
+    font-size: 3.2rem;
+  }
+  .feature__desc {
+    max-width: 100%;
+    font-size: 1.6rem;
+  }
 }
 @media screen and (max-width: 767.98px) {
   .container {
@@ -564,6 +806,55 @@ img {
     top: 10px;
     left: 38px;
   }
+  .service__inner {
+    margin: 10px 0;
+  }
+  /* Feature */
+  .feature__inner {
+    justify-content: center;
+  }
+  .feature__content {
+    text-align: center;
+  }
+  .feature__sub-heading {
+    font-size: 1.6rem;
+  }
+  .feature__heading {
+    max-width: 100%;
+  }
+  .feature__cta .feature__btn {
+    --height: 58px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 180px;
+    font-size: 1.6rem;
+  }
+  /* Install */
+  .install__content {
+    text-align: center;
+  }
+  .install__heading {
+    max-width: 100%;
+  }
+  .install__desc {
+    max-width: 100%;
+  }
+  .install__cta {
+    justify-content: center;
+  }
+  /* .install__btn {
+    font-size: 1.6rem;
+    padding: 12px 2px;
+  } */
+  /* Footer */
+  .footer .row {
+    padding-bottom: 40px;
+  }
+  .copyright {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 @media screen and (max-width: 766.98px) {
   /* Hero */
@@ -577,9 +868,7 @@ img {
   .service__row {
     padding: 0 12px;
   }
-  .service__inner {
-    margin: 10px 0;
-  }
+
   .service__inner:hover .service__bg {
     top: 10px;
     left: 38px;
