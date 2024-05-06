@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  border: 0;
+}
+a {
+  text-decoration: none;
+}
+h2,
+h3,
+h4,
+p,
+label,
+span,
+a,
+button {
+  font-family: "Rajdhani", "Roboto", sans-serif;
+  line-height: 1em;
+}
