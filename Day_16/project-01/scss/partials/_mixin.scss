@@ -1,0 +1,21 @@
+@mixin media-desktop {
+  @media screen and (max-width: 1400px) {
+    @content;
+  }
+}
+@mixin media-desktop-992 {
+  @media screen and (max-width: 992px) {
+    @content;
+  }
+}
+@mixin media-tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin container($width, $spacer: 0, $padding-inline: 20px) {
+  width: 100%;
+  max-width: calc($width);
+  margin: $spacer auto;
+  padding-inline: $padding-inline;
+}

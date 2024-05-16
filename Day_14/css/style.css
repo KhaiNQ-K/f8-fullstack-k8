@@ -1,0 +1,232 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Sofia Sans", sans-serif;
+  font-size: 1.6rem;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  outline: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper-inner {
+  width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr 0.7fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "sidebar header header header header" "sidebar main main main main" "sidebar main main main main" "sidebar main main main main" "sidebar main main main main";
+}
+
+.sidbar {
+  grid-area: sidebar;
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  height: 128px;
+}
+.header .search-form {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  column-gap: 18px;
+}
+.header .search-form .search {
+  background-color: #fff;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+.header .search-form .search::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
+.header .nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  gap: 46px;
+}
+.header .nav-list .nav-item .nav-link {
+  position: relative;
+  color: #000;
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding-bottom: 8px;
+}
+.header .nav-list .nav-item .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #000;
+  transition: width 0.5s ease;
+}
+.header .nav-list .nav-item .nav-link:hover::after, .header .nav-list .nav-item .nav-link.active::after {
+  width: 100%;
+}
+.header .actions {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  column-gap: 26px;
+  margin-left: 50px;
+}
+
+.main {
+  grid-area: main;
+}
+
+/*# sourceMappingURL=style.css.map */

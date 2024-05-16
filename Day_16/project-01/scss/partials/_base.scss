@@ -1,0 +1,49 @@
+@use "./mixin" as m;
+@use "./variable" as v;
+.wrapper {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.container {
+  @include m.container(1200px);
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  font-family: v.$font-family;
+  color: v.$text-color;
+}
+.section-heading {
+  font-size: 3.1rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 131.523%;
+  color: v.$text-color;
+  margin: 0 auto;
+  text-align: center;
+}
+.section-desc {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 127.604%; /* 127.604% */
+  margin: 0 auto;
+}
+.btn {
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  font-size: 1.667rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 13.33px 12px;
+  border-radius: 6.667px;
+  background: v.$green-dark;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  &--primary {
+  }
+}
