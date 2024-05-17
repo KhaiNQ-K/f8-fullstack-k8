@@ -28,6 +28,7 @@ body {
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 127.604%; /* 127.604% */
+  text-align: center;
   margin: 0 auto;
 }
 .btn {
@@ -46,4 +47,10 @@ body {
   align-items: center;
   &--primary {
   }
+}
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--line-clamp, 4);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
