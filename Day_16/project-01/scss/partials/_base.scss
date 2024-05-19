@@ -5,7 +5,7 @@
   margin: 0 auto;
 }
 .container {
-  @include m.container(1200px);
+  @include m.container(v.$container-width);
 }
 html {
   font-size: 62.5%;
@@ -31,6 +31,16 @@ body {
   text-align: center;
   margin: 0 auto;
 }
+@include m.media-desktop-992 {
+  // .container {
+  //   @include m.container(992px);
+  // }
+}
+@include m.media-tablet {
+  // .container {
+  //   @include m.container(767px);
+  // }
+}
 .btn {
   display: inline-block;
   color: #fff;
@@ -41,11 +51,14 @@ body {
   line-height: normal;
   padding: 13.33px 12px;
   border-radius: 6.667px;
-  background: v.$green-dark;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   &--primary {
+    background: v.$green-dark;
+  }
+  &--outline {
+    // border: 1px solid
   }
 }
 .line-clamp {
