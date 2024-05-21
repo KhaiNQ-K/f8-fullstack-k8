@@ -1,22 +1,14 @@
-@import "./reset";
+// @import "./reset";
 @import "./variable";
-@import "./mixins";
+// @import "./mixins";
 
-html {
-  font-size: 62.5%;
-}
-body {
-  font-family: "Sofia Sans", sans-serif;
-  font-size: 1.6rem;
-}
-input,
-button,
-textarea,
-select {
-  font-family: inherit;
-  outline: none;
-  border: none;
-}
+// html {
+//   font-size: 62.5%;
+// }
+// body {
+//   font-family: "Sofia Sans", sans-serif;
+//   font-size: 1.6rem;
+// }
 
 a {
   text-decoration: none;

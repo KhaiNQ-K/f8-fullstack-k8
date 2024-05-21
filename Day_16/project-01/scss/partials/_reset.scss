@@ -134,3 +134,11 @@ img {
   max-width: 100%;
   height: auto;
 }
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  outline: none;
+  border: none;
+}

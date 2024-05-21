@@ -42,7 +42,6 @@ body {
   // }
 }
 .btn {
-  display: inline-block;
   color: #fff;
   text-align: center;
   font-size: 1.667rem;
@@ -58,7 +57,9 @@ body {
     background: v.$green-dark;
   }
   &--outline {
-    // border: 1px solid
+    border: 1px solid v.$green-dark;
+    color: v.$text-color;
+    gap: 0 3.33px;
   }
 }
 .line-clamp {
@@ -66,4 +67,33 @@ body {
   -webkit-line-clamp: var(--line-clamp, 4);
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.col-12 {
+  width: 100%;
+}
+.col-6 {
+  width: calc(100% / 2);
+  padding-left: v.$gap;
+}
+.col-4 {
+  width: calc(100% / 3);
+}
+
+.space-between {
+  justify-content: space-between;
+}
+.page-hero {
+  background: v.$green-f2;
+  padding: 57.5px 0;
+  &-heading {
+    font-size: 4.333rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
 }

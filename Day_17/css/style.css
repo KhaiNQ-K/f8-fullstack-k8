@@ -1,0 +1,29 @@
+body {
+  background-color: #111;
+  padding: 20px;
+  color: white;
+  font-size: 125%;
+  border-radius: 10px;
+}
+pre {
+  width: 40ch;
+  /* height: 300px; */
+  font-family: monospace;
+  font-size: 16px;
+  line-height: 16px;
+
+  background-repeat: no-repeat;
+  background-size: 80ch 30px, 80ch 60px, 80ch 90px, 80ch 120px, 80ch 150px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #fff;
+}
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.col-3 {
+  max-width: calc(100% / 3);
+}
