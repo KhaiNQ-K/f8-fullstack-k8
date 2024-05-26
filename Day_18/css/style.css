@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.item {
+  max-width: calc(100% / 2);
+  width: 100%;
+}
