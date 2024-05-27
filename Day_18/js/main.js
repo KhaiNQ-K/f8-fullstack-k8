@@ -24,11 +24,11 @@ function chargeTaxi(nKm) {
   }
   return totalPrice;
 }
-let taxiBtn = document.querySelector(".taxi-btn");
-taxiBtn.addEventListener("click", function () {
-  let nKm = document.querySelector(".nKm").value;
+let taxiBtn = document.querySelector('.taxi-btn');
+taxiBtn.addEventListener('click', function () {
+  let nKm = document.querySelector('.nKm').value;
   const totalPrice = chargeTaxi(nKm);
-  let resultElement = document.querySelector(".taxi-result");
+  let resultElement = document.querySelector('.taxi-result');
   resultElement.innerHTML = totalPrice;
 });
 // Bài 2
@@ -50,8 +50,7 @@ function electricCost(nPower) {
   else if (nPower <= FIRST_NPOWER) {
     totalCost = FIRST_EPRICE * nPower;
   } else if (nPower > FIRST_NPOWER && nPower <= SECOND_NPOWER) {
-    totalCost =
-      SECOND_EPRICE * (nPower - FIRST_NPOWER) + FIRST_EPRICE * FIRST_NPOWER;
+    totalCost = SECOND_EPRICE * (nPower - FIRST_NPOWER) + FIRST_EPRICE * FIRST_NPOWER;
   } else if (nPower >= SECOND_NPOWER && nPower <= THIRD_NPOWER) {
     totalCost =
       THIRD_EPRICE * (nPower - SECOND_NPOWER) +
@@ -81,10 +80,105 @@ function electricCost(nPower) {
   }
   return totalCost;
 }
-let electric = document.querySelector(".power-btn");
-electric.addEventListener("click", function () {
-  let nPower = document.querySelector(".nPower").value;
+let electric = document.querySelector('.power-btn');
+electric.addEventListener('click', function () {
+  let nPower = document.querySelector('.nPower').value;
   const totalPrice = electricCost(nPower);
-  let resultElement = document.querySelector(".power-result");
+  let resultElement = document.querySelector('.power-result');
   resultElement.innerHTML = totalPrice;
 });
+// Bài 3: Tính giá trị biểu thức
+function calculateExpression(n) {
+  if (n <= 0) return;
+  var total = 0;
+  let prevNumb = 1;
+  for (let i = 2; i <= n + 1; i++) {
+    total += prevNumb * i;
+    prevNumb = i;
+  }
+  return total;
+}
+let n = document.querySelector('.expression-btn');
+n.addEventListener('click', function () {
+  let nExpression = Number(document.querySelector('.nExpression').value);
+  const resultExpress = calculateExpression(nExpression);
+  let resultElement = document.querySelector('.expression-result');
+  resultElement.innerHTML = resultExpress;
+});
+
+function isPrime(number) {
+  let isPrime = true;
+  if (number < 2) return false;
+  for (let i = 2; i < number; i++) {
+    if (number % i === 0) {
+      isPrime = false;
+      break;
+    }
+  }
+  return isPrime;
+}
+let isPrimeBtn = document.querySelector('.isPrime-btn');
+isPrimeBtn.addEventListener('click', function () {
+  let isPrimeNumber = Number(document.querySelector('.isPrime').value);
+  let texInner = `Số ${isPrimeNumber} ${
+    isPrime(isPrimeNumber) ? 'là số nguyên tố' : 'không phải là số nguyên tố'
+  }`;
+  let resultElement = document.querySelector('.isPrime-result');
+  resultElement.innerHTML = texInner;
+});
+
+function paintNumberTriangle(rowNumber) {
+  var triagle = '';
+  var countNumber = 1;
+  for (let i = 1; i <= rowNumber; i++) {
+    for (let j = 1; j <= i; j++) {
+      triagle += countNumber + ' ';
+      countNumber++;
+    }
+    triagle += '<br>';
+  }
+  return triagle;
+}
+let rowNumberBtn = document.querySelector('.row-btn');
+rowNumberBtn.addEventListener('click', function () {
+  let rowNumber = Number(document.querySelector('.row').value);
+  var result = paintNumberTriangle(rowNumber);
+  let resultRowNum = document.querySelector('.row-result');
+  resultRowNum.innerHTML = result;
+});
+// Bài 6: Vẽ bàn cờ vua
+function generateChess() {
+  var row = 8;
+  var column = 8;
+  var chess = '';
+  for (let i = 1; i <= row; i++) {
+    var currentValue = i;
+    for (j = 1; j <= column; j++) {
+      if ((j + i) % 2 !== 0) {
+        chess += `<span class="black"></span>`;
+      } else {
+        chess += `<span class="white"></span>`;
+      }
+      currentValue++;
+    }
+    chess += '<br>';
+  }
+  return chess;
+}
+let resultChess = document.querySelector('.chess-result');
+resultChess.innerHTML = generateChess();
+// Bài 7: Bảng cứu chương
+function generateMultiplicationTable(n) {
+  var result = '';
+  for (let i = 1; i <= n; i++) {
+    result += '<div class="column">';
+    for (let j = 1; j <= n; j++) {
+      result += `<span>${i}  x   ${j}  =  ${i * j}</span>`;
+      result += '<br>';
+    }
+    result += '</div>';
+  }
+  return result;
+}
+let resultMultipliecationTalbe = document.querySelector('.multipleTable-result');
+resultMultipliecationTalbe.innerHTML = generateMultiplicationTable(10);
