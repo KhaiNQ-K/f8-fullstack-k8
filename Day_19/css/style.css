@@ -1,0 +1,17 @@
+body {
+  font-size: 18px;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+  margin-inline: auto;
+  max-width: 1200px;
+}
+.item {
+  max-width: calc(100% / 2);
+  width: 100%;
+  margin-right: auto;
+}
