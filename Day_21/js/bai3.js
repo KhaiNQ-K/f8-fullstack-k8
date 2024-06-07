@@ -13,9 +13,9 @@ function filterArray(callback, currentArray) {
     if (callback(currentArray[idx], idx, currentArray)) {
       var element = currentArray[+idx];
       if (!Number(element)) {
-        newArray.push(currentArray[idx]);
+        newArray[newArray.length] = currentArray[idx];
       } else {
-        newArray.push(+currentArray[idx]);
+        newArray[newArray.length] = currentArray[idx];
       }
     }
   }
