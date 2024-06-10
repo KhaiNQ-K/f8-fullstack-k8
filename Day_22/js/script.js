@@ -1,21 +1,4 @@
 // Bài 1
-function ex01() {
-  var arrA = [1, 4, 3, 2];
-  var arrB = [5, 2, 6, 7, 1];
-  function sameValue(arrA, arrB) {
-    return arrA.filter((x) => arrB.includes(x));
-  }
-  var rs = sameValue(arrA, arrB);
-  document.getElementById('ex01').innerHTML = `[${rs}]`;
-}
-function ex02() {
-  //flat array but dont using flat();
-  var arr = [0, 1, [2, 3], [4, 5, [6, 7]], [8, [9, 10, [11, 12]]]];
-  //dont using flat() method
-  var rs = flattenArray(arr);
-  document.getElementById('ex02').innerHTML = `[${rs}]`;
-}
-
 function flattenArray(arr) {
   var result = [];
   for (var i in arr) {
@@ -27,6 +10,21 @@ function flattenArray(arr) {
   }
   return result;
 }
+function ex01() {
+  var arrA = [1, 4, 3, 2];
+  var arrB = [5, 2, 6, 7, 1];
+  function sameValue(arrA, arrB) {
+    return arrA.filter((x) => arrB.includes(x));
+  }
+  var rs = sameValue(arrA, arrB);
+  document.getElementById('ex01').innerHTML = `[${rs}]`;
+}
+function ex02() {
+  var arr = [0, 1, [2, 3], [4, 5, [6, 7]], [8, [9, 10, [11, 12]]]];
+  var rs = flattenArray(arr);
+  document.getElementById('ex02').innerHTML = `[${rs}]`;
+}
+
 function ex03() {
   var arr = [
     ['a', 1, true],
