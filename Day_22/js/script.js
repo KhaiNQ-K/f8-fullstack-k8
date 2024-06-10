@@ -82,10 +82,11 @@ function ex04() {
   ];
 
   function generateList(arr) {
-    return arr.map(
-      (item, idx) =>
-        `<div class="${idx % 2 === 0 ? 'row' : 'row reverse'}">
-          <div class="col-4 ">
+    return arr
+      .map(
+        (item, idx) =>
+          `<div class="${idx % 2 === 0 ? 'row' : 'row reverse'}">
+          <div class="col-4">
              <img class="img-fluid" src="${item[0]}" alt="${item[1]}" />
           </div>
           <div class="col-8 pl-2">
@@ -94,7 +95,8 @@ function ex04() {
           </div>
           <div class="col-12 sperator"></div>
         </div>`
-    );
+      )
+      .join('');
   }
   var rs = generateList(arr);
   document.getElementById('ex04').innerHTML = rs;
