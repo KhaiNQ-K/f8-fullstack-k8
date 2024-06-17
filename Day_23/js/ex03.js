@@ -13,12 +13,12 @@ function ex03() {
   var newArray = arrayNumber.sort(function (a, b) {
     return a - b;
   });
-  console.log(newArray);
+  var length = newArray.length;
   // max element < 0
   if (newArray[length - 1] < 0 || newArray[0] > 1) return 1;
   var item = 0;
   for (let i = newArray[0]; ; i++) {
-    if (!newArray.includes(i)) {
+    if (!newArray.includes(i) && i !== 0) {
       item = i;
       break;
     }
