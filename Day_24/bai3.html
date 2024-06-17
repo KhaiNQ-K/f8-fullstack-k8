@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài tập số 3</title>
+    <style>
+      body {
+        background: #59c4a6;
+      }
+      button {
+        outline: none;
+        border: none;
+        background: #fff;
+        display: inline-block;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 120px;
+      }
+      .form-wrapper {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 1px 1px 1px 2px #fff;
+        padding: 10px 20px;
+        width: 500px;
+      }
+      .form-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 10px;
+      }
+      .form-header {
+        .btn {
+          width: 50%;
+          cursor: pointer;
+          padding: 10px 20px;
+          border-radius: 5px;
+          text-align: center;
+          font-size: 18px;
+          font-weight: 600;
+        }
+      }
+      .form-login {
+        display: none;
+      }
+      .form-register {
+        display: none;
+      }
+      .form-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-wrap: wrap;
+      }
+      .col-12 {
+        max-width: 100%;
+        width: 100%;
+      }
+      .form-group {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 10px;
+      }
+      .form-input {
+        outline: none;
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .form-footer {
+        margin-block: 30px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-submit {
+        padding: 10px 20px;
+        background: #59c4a6;
+        display: block;
+        width: 100%;
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 18px;
+        color: #fff;
+      }
+      input[type="radio"]:checked#form-login ~ .form-login {
+        display: block;
+      }
+      input[type="radio"]:checked#form-login
+        ~ .form-login
+        .form-header
+        label.login.active,
+      input[type="radio"]:checked#form-register
+        ~ .form-register
+        .form-header
+        label.register.active {
+        background: #59c4a6;
+        color: #fff;
+      }
+
+      input[type="radio"]:checked#form-register ~ .form-register {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-wrapper">
+        <input type="radio" hidden name="form" id="form-login" checked />
+        <input type="radio" hidden name="form" id="form-register" />
+        <div class="form-inner form-register">
+          <div class="form-header">
+            <label for="form-login" class="btn login active">Login</label>
+
+            <label for="form-register" class="btn register active">
+              Register</label
+            >
+          </div>
+          <div class="form-body register">
+            <h2 class="col-12">Register</h2>
+            <div class="form-group col-12">
+              <input
+                class="col-12 form-input"
+                type="text"
+                name="email"
+                placeholder="Email"
+              />
+
+              <input
+                class="col-12 form-input"
+                type="text"
+                name="name"
+                placeholder="Name"
+              />
+              <input
+                class="col-12 form-input"
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <div class="form-footer">
+            <button class="btn-submit btn-register">Register</button>
+          </div>
+        </div>
+        <div class="form-inner form-login">
+          <div class="form-header">
+            <label for="form-login" class="btn login active">Login</label>
+
+            <label for="form-register" class="btn register active">
+              Register</label
+            >
+          </div>
+          <div class="form-body login">
+            <h2 class="col-12">Login</h2>
+            <div class="form-group col-12">
+              <input
+                class="col-12 form-input"
+                type="text"
+                name="email"
+                placeholder="Email"
+              />
+
+              <input
+                class="col-12 form-input"
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <div class="form-footer">
+            <button class="btn-submit btn-login">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/bai3.js"></script>
+  </body>
+</html>
