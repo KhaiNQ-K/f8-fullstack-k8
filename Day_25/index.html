@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
+      .row {
+        display: flex;
+        row-gap: 10px;
+      }
+      .col-6 {
+        max-width: 50%;
+        width: 100%;
+      }
+      #ex03-input,
+      #ex03 {
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Bài tập buổi 25</h1>
+      <div class="wrapper">
+        <h2>Bài 1</h2>
+        <h4>Viết 1 hàm tính tổng giá trị biểu thức, tham số truyền vào ở dạng Rest Parameter</h4>
+        <p>Input: 1, '2', 3, 4, 5</p>
+        <p>Output: <span id="ex01"></span></p>
+      </div>
+      <div class="wrapper">
+        <h2>Bài 2</h2>
+        <h4>
+          Viết 1 phương thức Prototype có tên là getCurrency có đối số truyền vào là đơn vị tiền tệ
+          cần hiển thị
+        </h4>
+        <div>
+          <p>Input: <code>var price = "12000000"</code></p>
+        </div>
+        <div>
+          Output:
+          <pre id="ex02"></pre>
+        </div>
+      </div>
+      <div class="wrapper">
+        <h2>Bài 3</h2>
+        <h4>Chuyển đổi mảng 1 chiều thành dạng lồng (nested)</h4>
+        <div class="row">
+          <div class="col-6">
+            Input:
+            <pre id="ex03-input"></pre>
+          </div>
+          <div class="col-6">
+            Output:
+            <pre id="ex03"></pre>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <h2>Bài 4</h2>
+        <h4>Viết lại vòng lặp reduce() trong Array bằng cách sử dụng Prototype trong Javascript</h4>
+        <p>
+          Input:
+          <code>
+            var array = [1, 2, 3, 4, 5];
+            <div>array.myReduce(function (acc, number) { return acc + number; });</div>
+          </code>
+        </p>
+        <p>Output: <span id="ex04"></span></p>
+      </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
