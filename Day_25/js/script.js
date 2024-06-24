@@ -1,12 +1,21 @@
 function ex01() {
   function totalExpress(...rest) {
-    var idx = rest.findIndex((x) => !Number(x));
-    if (idx > -1) {
-      alert('Có phần tử không phải là số');
-      return;
-    } else {
-      return rest.reduce((acc, number) => acc + +number);
+    // var idx = rest.findIndex((x) => !Number(x));
+    // if (idx > -1) {
+    //   alert('Có phần tử không phải là số');
+    //   return;
+    // } else {
+    //   return rest.reduce((acc, number) => acc + +number);
+    // }
+    var sum;
+    for (var idx of rest) {
+      if (typeof +idx !== 'number' || Number.isNaN(+idx)) {
+        alert('Có phần tử không phải là số');
+        return;
+      }
+      sum += Number(idx);
     }
+    return sum;
   }
   var rs = totalExpress(1, '2', 3, 4, 5);
   var ex01 = document.getElementById('ex01');
@@ -16,30 +25,31 @@ ex01();
 // Bài 2
 function ex02() {
   var price = '12000000';
-  Number.prototype.getCurrency = function (unit) {
+  Object.prototype.getCurrency = function (unit) {
+    if (Array.isArray(this) || typeof this !== 'string' || typeof this !== 'number') return;
     if (!unit) {
       console.log('Enter the currency unit ');
       return;
     }
-    var numberStr = this.toString();
+    var numberStr = this.toString().split('.');
+    var integer = numberStr[0];
+    var decimal = numberStr[0];
     var length = numberStr.length;
     var result = '';
     var count = 0;
     for (var i = length - 1; i >= 0; i--) {
-      result = numberStr[i] + result;
+      result = integer[i] + result;
       count++;
       if (count % 3 === 0 && i !== 0) {
         result = ',' + result;
       }
     }
-    return result + ' ' + unit;
+    return result + '.' + decimal + ' ' + unit;
   };
   var price = '12000000';
-  if (Number(price)) {
-    var rs = Number(price).getCurrency('đ');
-    var ex02 = document.getElementById('ex02');
-    ex02.innerHTML = rs;
-  }
+  var rs = price.getCurrency('đ');
+  var ex02 = document.getElementById('ex02');
+  ex02.innerHTML = rs;
 }
 ex02();
 // Bài 3
