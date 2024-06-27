@@ -1,253 +1,294 @@
-// var audioEL = document.querySelector("#audio");
-// var playBtnEL = document.querySelector(".play-btn");
-// var progressBarEL = document.querySelector(".progress-bar");
-// var progressEL = document.querySelector(".progress");
-// var pointEL = document.querySelector(".point");
-// var timerEL = document.querySelector(".timer");
-// var currentTimeEL = document.querySelector(".current-time");
-// var endTimeEL = document.querySelector(".end-time");
-// var isPlay = false;
-// var timeline = 0;
-// var isDrag = false;
-// var initialClientX = 0;
-// var initialRate = 0;
-// var rate = 0;
-// currentTimeEL.innerHTML = toMinutes(timeline);
-// document.addEventListener("mousemove", function (e) {
-//   if (isDrag) {
-//     var space = e.clientX - initialClientX;
-//     // console.log(space);
-//     rate = (space * 100) / progressBarEL.clientWidth + initialRate;
-//     if (rate < 0) {
-//       rate = 0;
-//     }
-
-//     if (rate > 100) {
-//       rate = 100;
-//     }
-
-//     progressEL.style.width = `${rate}%`;
-
-//     var currentTime = (audio.duration * rate) / 100;
-//     currentTimeEL.innerText = toMinutes(currentTime);
-//   }
-// });
-
-// document.addEventListener("mouseup", function () {
-//   isDrag = false;
-//   initialRate = rate;
-//   var currentTime = (audio.duration * rate) / 100;
-//   currentTimeEL.innerText = toMinutes(currentTime);
-
-//   audio.currentTime = currentTime;
-// });
-
-// playBtnEL.addEventListener("click", function (e) {
-//   e.stopPropagation();
-//   audioEL.paused
-//     ? (audioEL.play(),
-//       (playBtnEL.innerHTML = `<i class="fa-solid fa-pause"></i>`))
-//     : (audioEL.pause(),
-//       (playBtnEL.innerHTML = `<i class="fa-solid fa-play"></i>`));
-// });
-// function toMinutes(timer) {
-//   var minute = Math.floor(timer / 60);
-//   var second = Math.floor(timer - minute * 60);
-//   return `${minute < 10 ? "0" + minute : minute}:${
-//     second < 10 ? "0" + second : second
-//   }`;
-// }
-// audioEL.addEventListener("loadeddata", function () {
-//   endTimeEL.innerHTML = toMinutes(audioEL.duration);
-// });
-// audioEL.addEventListener("timeupdate", function () {
-//   if (!isDrag) {
-//     currentTimeEL.innerText = toMinutes(this.currentTime);
-//     timeline = (this.currentTime / this.duration) * 100;
-//     progressEL.style.width = `${timeline}%`;
-//   }
-// });
-// audioEL.addEventListener("ended", function () {
-//   rate = 0;
-//   this.currentTime = 0;
-//   progressEL.style.width = 0;
-//   playBtnEL.innerHTML = playIcon;
-// });
-// progressBarEL.addEventListener("mousemove", function (e) {
-//   e.stopPropagation();
-//   isDrag = true;
-//   timerEL.style.display = "block";
-//   timerEL.style.left = `${e.offsetX}px`;
-
-//   var currentTime =
-//     (((e.offsetX * 100) / progressBarEL.clientWidth) * audioEL.duration) / 100;
-//   timerEL.innerText = toMinutes(currentTime);
-// });
-// progressBarEL.addEventListener("mousedown", function (e) {
-//   e.stopPropagation();
-//   if (e.which === 1) {
-//     isDrag = true;
-//     rate = (e.offsetX / progressBarEL.offsetWidth) * 100;
-//     initialRate = rate;
-//     initialClientX = e.clientX;
-//     var currentTime = (rate * audioEL.duration) / 100;
-//     currentTimeEL.innerText = toMinutes(currentTime);
-//     progressEL.style.width = `${timeline}%`;
-//     audioEL.currentTime = currentTime;
-//   }
-// });
-// progressBarEL.addEventListener("mouseout", function (e) {
-//   e.stopPropagation();
-//   timerEL.style.display = "none";
-// });
-
-// pointEL.addEventListener("mousedown", function (e) {
-//   console.log(e.which);
-//   if (e.which === 1) {
-//     isDrag = true;
-//     initialClientX = e.clientX;
-//   }
-// });
-
-var progressBar = document.querySelector('.progress-bar');
-
-var progress = progressBar.querySelector('.progress');
-
-var progressDot = progress.querySelector('.point');
-
-var progressBarWidth = progressBar.clientWidth;
-
-var timer = progressBar.querySelector('.timer');
-
-var isDrag = false;
-var initialClientX = 0;
-var initalRate = 0;
-var rate = 0;
-
-progressBar.addEventListener('mousedown', function (e) {
-  if (e.which === 1) {
-    //   console.log(e.offsetX, progressBarWidth);
-    //Tính tỷ lệ phần trăm giữa vị trí click với chiều rộng
-    rate = (e.offsetX * 100) / progressBarWidth;
-
-    //Update CSS vào progress
-    progress.style.width = `${rate}%`;
-
-    initalRate = rate;
-
-    isDrag = true;
-
-    initialClientX = e.clientX;
-
-    var currentTime = (audio.duration * rate) / 100;
-    currentTimeEl.innerText = getTime(currentTime);
-
-    audio.currentTime = currentTime;
-  }
-});
-
-progressDot.addEventListener('mousedown', function (e) {
-  e.stopPropagation();
-  debugger;
-  if (e.which === 1) {
-    isDrag = true;
-    initialClientX = e.clientX;
-    //   console.log(initalRate);
-    //   console.log("progress dot");
-  }
-});
-
-document.addEventListener('mousemove', function (e) {
-  if (isDrag) {
-    var space = e.clientX - initialClientX;
-    // console.log(space);
-    rate = (space * 100) / progressBarWidth + initalRate;
-    if (rate < 0) {
-      rate = 0;
-    }
-
-    if (rate > 100) {
-      rate = 100;
-    }
-
-    progress.style.width = `${rate}%`;
-
-    var currentTime = (audio.duration * rate) / 100;
-    currentTimeEl.innerText = getTime(currentTime);
-  }
-});
-
-document.addEventListener('mouseup', function () {
-  isDrag = false;
-  initalRate = rate;
-  var currentTime = (audio.duration * rate) / 100;
-  currentTimeEl.innerText = getTime(currentTime);
-
-  audio.currentTime = currentTime;
-});
-
-var audio = document.querySelector('#audio');
-var currentTimeEl = progressBar.previousElementSibling;
-var durationTimeEl = progressBar.nextElementSibling;
-var playBtn = document.querySelector('.play-btn');
-
-var playIcon = `<i class="fa-solid fa-play"></i>`;
-var pauseIcon = `<i class="fa-solid fa-pause"></i>`;
-
-var getTime = function (seconds) {
-  var mins = Math.floor(seconds / 60);
-  seconds = Math.floor(seconds - mins * 60);
-  return `${mins < 10 ? '0' + mins : mins}:${seconds < 10 ? '0' + seconds : seconds}`;
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+const aShowModel = $('.login-link');
+const modalEl = $('.modal');
+const overlayEl = $('.overlay');
+const closeBtnEl = $('.close-icon');
+const emailInputEl = $('input[name="email"]');
+const passwordInputEl = $('input[name="password"]');
+let nameInputEl = null;
+const loadingEl = $('.loading');
+const toastEl = $('.toast');
+const formGroupEl = $$('.form-group');
+const submitForm = $('.form-login');
+const passwordIconEl = $('.icon-password');
+const loginSwitch = $('.login-switch');
+const registerSwitch = $('.register-switch');
+const loginFormEl = $$('.login-wrap');
+const registerFormEl = $$('.register-wrap');
+var isShow = false;
+const CLASS_INVALID = {
+  EMAIL_INVALID: 'email-invalid',
+  PASSWORD_REQUIRED: 'password-required',
+  NAME_REQUIRED: 'name-required',
+  EMAIL_REQUIRED: 'email-required',
 };
+const PASSWORD_ICON = {
+  EYE: '<i class="fa-solid fa-eye"></i>',
+  EYE_SLASH: '<i class="fa-solid fa-eye-slash"></i>',
+};
+const app = {
+  users: [],
+  isShow: false,
+  showPassword: false,
+  isLogin: true,
+  inputBlur: {
+    email: false,
+    password: false,
+    name: false,
+  },
+  methods: {
+    showModal() {
+      app.isShow = true;
+      this.toggleModal();
+    },
+    toggleModal: function () {
+      modalEl.classList.toggle('show', app.isShow);
+    },
+    hideModal: function () {
+      app.isShow = false;
+      this.toggleModal();
+    },
+    togglePassword: function () {
+      if (!app.showPassword) {
+        passwordInputEl.type = 'password';
+        app.showPassword = false;
+        passwordIconEl.innerHTML = PASSWORD_ICON.EYE;
+      } else {
+        passwordInputEl.type = 'text';
+        app.showPassword = true;
+        passwordIconEl.innerHTML = PASSWORD_ICON.EYE_SLASH;
+      }
+    },
+    handleLogin: function () {
+      // validation
+      var invalid = this.handleValidation();
+      if (invalid) return;
+      const user = {
+        email: emailInputEl.value,
+        password: passwordInputEl.value,
+      };
 
-audio.addEventListener('loadeddata', function () {
-  //   console.log(audio.duration);
-  durationTimeEl.innerText = getTime(audio.duration);
-});
+      loadingEl.classList.add('active');
+      setTimeout(() => {
+        const exists = app.users.some((x) => x.email == user.email && x.password == user.password);
+        if (!exists) {
+          toastEl.classList.add('error');
+          toastEl.innerText = 'Email hoặc mật khẩu không chính xác';
+          loadingEl.classList.remove('active');
+          return;
+        }
+        toastEl.innerText = 'Đăng nhận thành công';
+        toastEl.classList.add('success');
+        loadingEl.classList.remove('active');
+      }, 3000);
+    },
+    handleRegister: function () {
+      // validation
+      var invalid = this.handleValidation();
+      if (invalid) return;
+      const user = {
+        email: emailInputEl.value,
+        password: passwordInputEl.value,
+        name: nameInputEl.value,
+      };
+      loadingEl.classList.add('active');
+      setTimeout(() => {
+        const exists = app.users.some((x) => x.email == user.email);
+        if (exists) {
+          toastEl.classList.add('error');
+          toastEl.innerText = 'Email được đăng ký';
+          loadingEl.classList.remove('active');
+          return;
+        }
+        app.users.push(user);
+        loadingEl.classList.add('active');
+        toastEl.classList.add('success');
+        loadingEl.classList.remove('active');
+        toastEl.innerText = 'Đăng ký thành công';
+      }, 3000);
+    },
+    emailInvalid: function () {
+      const regex = '^[^@]+@[^@]+.[^@]+$';
+      // check email format
+      const email = emailInputEl.value;
+      let data = {
+        invalid: false,
+        required: false,
+        class: [CLASS_INVALID.EMAIL_REQUIRED, CLASS_INVALID.EMAIL_INVALID],
+      };
+      if (!email) {
+        data.invalid = false;
+        data.required = true;
+      } else if (!email.match(regex)) {
+        data.invalid = true;
+        data.required = false;
+      }
+      return data;
+    },
+    passwordInvalid() {
+      const password = passwordInputEl.value;
+      if (!password) {
+        return {
+          required: true,
+          class: CLASS_INVALID.PASSWORD_REQUIRED,
+        };
+      } else {
+        return {
+          required: false,
+          class: CLASS_INVALID.PASSWORD_REQUIRED,
+        };
+      }
+    },
+    nameInvalid() {
+      const name = nameInputEl.value;
+      if (!name) {
+        return {
+          required: true,
+          class: CLASS_INVALID.NAME_REQUIRED,
+        };
+      } else {
+        return {
+          required: false,
+          class: CLASS_INVALID.NAME_REQUIRED,
+        };
+      }
+    },
+    handleValidation: function (type, isBlur) {
+      const emailInvalid = this.emailInvalid();
+      const passwordInvalid = this.passwordInvalid();
+      if (!app.isLogin) {
+        const nameInvalid = this.nameInvalid();
+        formGroupEl[0].classList.toggle(
+          CLASS_INVALID.NAME_REQUIRED,
+          type === 'name' || app.inputBlur.name ? nameInvalid.required : false
+        );
+      }
+      if (emailInvalid.class.includes(CLASS_INVALID.EMAIL_REQUIRED)) {
+        formGroupEl[1].classList.toggle(
+          CLASS_INVALID.EMAIL_REQUIRED,
+          type === 'email' || app.inputBlur.email ? emailInvalid.required : false
+        );
+      }
+      if (emailInvalid.class.includes(CLASS_INVALID.EMAIL_INVALID)) {
+        formGroupEl[1].classList.toggle(CLASS_INVALID.EMAIL_INVALID, emailInvalid.invalid);
+      }
+      formGroupEl[2].classList.toggle(
+        passwordInvalid.class,
+        type === 'password' || app.inputBlur.password ? passwordInvalid.required : false
+      );
+      if (!emailInvalid.required && !emailInvalid.invalid && !passwordInvalid.required) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    clearData: function () {
+      emailInputEl.value = '';
+      passwordInputEl.value = '';
+      if (nameInputEl) {
+        nameInputEl.value = '';
+      }
+      app.inputBlur = {
+        email: false,
+        password: false,
+        name: false,
+      };
+      toastEl.innerText = '';
+      toastEl.classList.remove('success', 'error');
+      app.showPassword = false;
+      this.togglePassword();
+      formGroupEl[0].classList.remove(CLASS_INVALID.NAME_REQUIRED);
+      formGroupEl[1].classList.remove(CLASS_INVALID.EMAIL_INVALID);
+      formGroupEl[1].classList.remove(CLASS_INVALID.EMAIL_REQUIRED);
+      formGroupEl[2].classList.remove(CLASS_INVALID.PASSWORD_REQUIRED);
+    },
+    handleSwitchForm: function () {
+      debugger;
+      this.clearData();
+      loginSwitch.classList.toggle('active', app.isLogin);
+      registerSwitch.classList.toggle('active', !app.isLogin);
+      loginFormEl.forEach((el) => {
+        el.style.display = app.isLogin ? 'block' : 'none';
+      });
+      registerFormEl.forEach((el) => {
+        el.style.display = !app.isLogin ? 'block' : 'none';
+      });
+    },
+  },
+  handleEvents: function () {
+    const _this = this;
+    // Switch form
+    loginSwitch.onclick = function () {
+      _this.isLogin = true;
+      _this.methods.handleSwitchForm();
+    };
+    registerSwitch.onclick = function () {
+      _this.isLogin = false;
+      _this.methods.handleSwitchForm();
+      nameInputEl = $('input[name="fullname"]');
+      nameInputEl.onblur = function () {
+        _this.inputBlur.name = true;
+        _this.methods.handleValidation('name');
+      };
+      nameInputEl.oninput = function () {
+        _this.methods.handleValidation('name');
+      };
+    };
 
-playBtn.addEventListener('click', function (e) {
-  e.stopPropagation();
-  if (audio.paused) {
-    audio.play();
-    this.innerHTML = pauseIcon;
-  } else {
-    audio.pause();
-    this.innerHTML = playIcon;
-  }
-});
+    // Sumit form
+    submitForm.onsubmit = function (e) {
+      e.preventDefault();
+      if (_this.isLogin) {
+        _this.methods.handleLogin();
+      } else {
+        _this.methods.handleRegister();
+      }
+    };
 
-audio.addEventListener('timeupdate', function () {
-  if (!isDrag) {
-    //   console.log("đang chạy: ", this.currentTime);
-    currentTimeEl.innerText = getTime(this.currentTime);
+    // Show hide modal
+    aShowModel.onclick = function () {
+      _this.methods.showModal();
+    };
 
-    //Tính tỷ lệ phần trăm
-    rate = (this.currentTime / this.duration) * 100;
-
-    //Update vào timer
-    progress.style.width = `${rate}%`;
-  }
-});
-
-audio.addEventListener('ended', function () {
-  rate = 0;
-  audio.currentTime = 0;
-  progress.style.width = 0;
-  playBtn.innerHTML = playIcon;
-});
-
-progressDot.addEventListener('mousemove', function (e) {
-  e.stopPropagation();
-});
-
-progressBar.addEventListener('mousemove', function (e) {
-  timer.style.display = 'block';
-  timer.style.left = `${e.offsetX}px`;
-  var rate = (e.offsetX * 100) / this.clientWidth;
-  var currentTime = (audio.duration * rate) / 100;
-  timer.innerText = getTime(currentTime);
-});
-
-progressBar.addEventListener('mouseout', function () {
-  timer.style.display = 'none';
-});
+    overlayEl.onclick = function (e) {
+      e.stopPropagation();
+      _this.methods.hideModal();
+      _this.methods.clearData();
+    };
+    closeBtnEl.onclick = function () {
+      _this.methods.hideModal();
+      _this.methods.clearData();
+    };
+    // Input value login
+    emailInputEl.oninput = function () {
+      _this.methods.handleValidation('email');
+    };
+    emailInputEl.onblur = function () {
+      _this.inputBlur.email = true;
+      _this.methods.handleValidation('email');
+    };
+    passwordInputEl.oninput = function () {
+      _this.methods.handleValidation('password');
+    };
+    passwordInputEl.onblur = function () {
+      _this.inputBlur.password = true;
+      _this.methods.handleValidation('password');
+    };
+    // show/hide password
+    passwordIconEl.onclick = function () {
+      _this.methods.togglePassword();
+    };
+  },
+  run() {
+    this.users = [];
+    this.render();
+    this.handleEvents();
+  },
+  render() {
+    debugger;
+    this.isLogin = true;
+    this.methods.handleSwitchForm();
+  },
+};
+app.run();

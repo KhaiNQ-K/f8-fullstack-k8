@@ -1,0 +1,127 @@
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.items-center {
+  align-items: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.mx-auto {
+  margin: 0 auto;
+}
+.my-auto {
+  margin: auto 0;
+}
+.m-auto {
+  margin: auto;
+}
+:root {
+  --container-width: 1200px;
+  --max-column: 12;
+  --column-space: 20px;
+  --spacer: 1.6rem;
+  /* --spacing-bottom: 0; */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  border: 0;
+}
+html {
+  font-size: 10px;
+}
+body {
+  font-size: 1.6rem;
+}
+.container {
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding: 0 15px;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  /* margin: calc(-1 * var(--column-space) / 2); */
+  margin-inline: calc(-1 * var(--column-space) / 2);
+}
+/* Gutter */
+.row.g-0 {
+  --column-space: 0;
+  --spacing-bottom: 0;
+}
+.row.g-1 {
+  --column-space: var(--spacer) * 0.25;
+  --spacing-bottom: var(--spacer) * 0.25;
+}
+.row.g-2 {
+  --column-space: var(--spacer) * 0.5;
+  --spacing-bottom: var(--spacer) * 0.5;
+}
+.row.g-3 {
+  --column-space: var(--spacer);
+  --spacing-bottom: var(--spacer);
+}
+.row.g-4 {
+  --column-space: var(--spacer) * 1.5;
+  --spacing-bottom: var(--spacer) * 1.5;
+}
+.row.g-5 {
+  --column-space: var(--spacer) * 3;
+  --spacing-bottom: var(--spacer) * 3;
+}
+/* Column */
+[class^='col-'] {
+  max-width: calc(100% / var(--max-column) * var(--column-size));
+  flex-basis: calc(100% / var(--max-column) * var(--column-size));
+  /* padding: calc(var(--column-space) / 2); */
+  padding-inline: calc(var(--column-space) / 2);
+  padding-bottom: calc(var(--spacing-bottom));
+}
+.col-1 {
+  --column-size: 1;
+}
+.col-2 {
+  --column-size: 2;
+}
+.col-3 {
+  --column-size: 3;
+}
+.col-4 {
+  --column-size: 4;
+}
+.col-5 {
+  --column-size: 5;
+}
+.col-6 {
+  --column-size: 6;
+}
+.col-7 {
+  --column-size: 7;
+}
+.col-8 {
+  --column-size: 8;
+}
+.col-9 {
+  --column-size: 9;
+}
+.col-10 {
+  --column-size: 10;
+}
+.col-11 {
+  --column-size: 11;
+}
+.col-12 {
+  --column-size: 12;
+}

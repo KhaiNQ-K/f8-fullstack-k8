@@ -3,38 +3,183 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Excercise 26</title>
+    <title>Excercise 27</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/grid.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <audio id="audio" src=""></audio>
-    <div class="container">
-      <div class="audio-wrapper">
-        <div class="btn">
-          <button class="play-btn">
-            <i class="fa-solid fa-play"></i>
-          </button>
-        </div>
-        <div class="audio-player">
-          <span class="current-time"></span>
-          <div class="progress-bar">
-            <div class="progress">
-              <span class="progress-dot"></span>
-              <span class="timer"></span>
+    <div class="login-link">
+      <a href="#" class="link">
+        <!-- User font awesome icon -->
+        <i class="fas fa-user"></i>
+        Đăng nhập</a
+      >
+    </div>
+    <div class="modal">
+      <div class="main">
+        <div class="modal-content">
+          <div class="form-wrap">
+            <div class="row g-3">
+              <div class="col-12">
+                <!-- Header form -->
+                <header class="form-header row items-center">
+                  <a href="#" class="link-header text-center"
+                    ><img src="./img/logo.png" alt="DanTri"
+                  /></a>
+                  <!-- Xmark icon -->
+                  <button class="close-icon"><i class="fa-solid fa-xmark"></i></button>
+                </header>
+                <!-- End header -->
+              </div>
             </div>
+            <!-- Start action -->
+            <div class="actions">
+              <div class="row g-0">
+                <div class="col-6">
+                  <button class="switch-btn login-switch active">Đăng nhập</button>
+                </div>
+                <div class="col-6">
+                  <button class="switch-btn register-switch">Đăng ký</button>
+                </div>
+              </div>
+            </div>
+            <!-- End action -->
+            <div class="row text-center g-3">
+              <div class="col-12">
+                <span class="desc login-wrap">với các tài khoản mạng xã hội</span>
+                <span class="desc register-wrap"
+                  >Hoàn thành đăng ký, và bắt đầu trải nghiệm ngay!</span
+                >
+              </div>
+            </div>
+            <div class="other-login login-wrap">
+              <div class="row g-3">
+                <div class="col-6">
+                  <button class="row justify-center items-center social">
+                    <img src="./img/google.svg" alt="Google" />
+                    <span>Google</span>
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button class="row justify-center items-center social">
+                    <img src="./img/facebook.svg" alt="Google" />
+                    <span>Facebook</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End social login -->
+            <!-- Form -->
+            <div class="row g-3 login-wrap">
+              <div class="col-12">
+                <div class="divider">
+                  <span>hoặc</span>
+                </div>
+              </div>
+            </div>
+            <form action="" class="form-login">
+              <div class="form-group row register-wrap">
+                <div class="col-12">
+                  <label class="form-label">Họ và tên</label>
+                </div>
+                <div class="col-12">
+                  <input
+                    type="text"
+                    class="form-input"
+                    name="fullname"
+                    placeholder="Họ và tên"
+                    id="name"
+                  />
+                  <span class="form-message name-required">Vui lòng nhập họ và tên</span>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-12">
+                  <label class="form-label">Email</label>
+                </div>
+                <div class="col-12">
+                  <input
+                    type="email"
+                    class="form-input"
+                    name="email"
+                    placeholder="Email"
+                    id="email"
+                  />
+                  <span class="form-message email-required">Vui lòng nhập email</span>
+                  <span class="form-message email-invalid">Email không đúng định dạng</span>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-12">
+                  <label class="form-label">Mật khẩu</label>
+                </div>
+                <div class="col-12">
+                  <div class="password-input">
+                    <input
+                      type="password"
+                      class="form-input"
+                      name="password"
+                      placeholder="Mật khẩu"
+                      id="password"
+                    />
+                    <!-- password icon -->
+                    <div class="icon-password">
+                      <!-- <i class="fa-solid fa-eye-slash"></i> -->
+                      <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <span class="form-message password-required">Vui lòng nhập mật khẩu</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row g-4 login-wrap">
+                <div class="col-12 text-right">
+                  <a href="#" class="forgot-pass">Quên mật khẩu?</a>
+                </div>
+              </div>
+              <div class="row g-4 register-wrap">
+                <div class="col-12 text-left">
+                  <p>
+                    Bằng cách đăng ký tài khoản, bạn cũng đồng thời chấp nhận mọi
+                    <a style="color: rgb(40, 40, 248)" href="#"
+                      >điều kiện về qui định và chính sách của Dân trí</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="row g-3">
+                <div class="col-12">
+                  <button type="submit" class="btn btn-login-submit">
+                    <div class="loading">
+                      <span class="login-wrap">Đăng nhập</span>
+                      <span class="register-wrap">Đăng ký</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 text-center">
+                  <span class="toast"></span>
+                </div>
+              </div>
+            </form>
           </div>
-          <span class="end-time"></span>
+          <!-- End login form -->
         </div>
       </div>
+      <div class="overlay"></div>
     </div>
-    <!-- <script src="./js/script.js"></script> -->
-    <script src="./js/main.js"></script>
+
+    <script src="./js/script.js"></script>
   </body>
 </html>

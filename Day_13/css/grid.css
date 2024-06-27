@@ -13,6 +13,7 @@
 .justify-between {
   justify-content: space-between;
 }
+
 .items-center {
   align-items: center;
 }
@@ -43,7 +44,7 @@
 .row.g-5 {
   --spacing: var(--spacer) * 3;
 }
-[class^="col-"] {
+[class^='col-'] {
   flex-basis: calc((100% / var(--max-column)) * var(--column));
   max-width: calc((100% / var(--max-column)) * var(--column));
   padding: calc(var(--spacing) / 2);
