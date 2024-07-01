@@ -3,38 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Excercise 26</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="./css/style.css" />
+    <title>Exercise</title>
   </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Font awesome cdn -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+  <link rel="stylesheet" href="./css/style.css" />
   <body>
-    <audio id="audio" src=""></audio>
-    <div class="container">
-      <div class="audio-wrapper">
-        <div class="btn">
-          <button class="play-btn">
-            <i class="fa-solid fa-play"></i>
-          </button>
+    <div class="todo-wrapper">
+      <h1 class="title">Get Things Done !</h1>
+      <form action="" class="todo-form">
+        <div class="form-group">
+          <input type="text" class="input todo-input" placeholder="What is the task today?" />
+          <button type="submit" class="btn btn-submit">Add Task</button>
         </div>
-        <div class="audio-player">
-          <span class="current-time"></span>
-          <div class="progress-bar">
-            <div class="progress">
-              <span class="progress-dot"></span>
-              <span class="timer"></span>
-            </div>
-          </div>
-          <span class="end-time"></span>
-        </div>
-      </div>
+        <ul class="todo-list"></ul>
+      </form>
     </div>
-    <!-- <script src="./js/script.js"></script> -->
     <script src="./js/main.js"></script>
   </body>
 </html>
+<!-- <li class="todo-item">
+  <div class="form-detail">
+    <span class="todo-text">Task 1</span>
+
+    <div class="btn-action-group">
+      <button type="button" class="edit-btn">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </button>
+      <button type="button" class="remove-btn">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+  </div>
+  <div class="form-edit">
+    <input type="text" class="input edit-input" placeholder="Update task" />
+    <button type="submit" class="btn btn-submit">Add Task</button>
+  </div>
+</li> -->
