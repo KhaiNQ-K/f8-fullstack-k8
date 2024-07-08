@@ -1,146 +1,125 @@
-const $ = document.querySelector.bind(document);
-const audio = $('#audio');
-const endTimeEl = $('.end-time');
-const currentTimeEl = $('.current-time');
-const playBtn = $('.play-btn');
-const playIcon = `<i class="fa-solid fa-play"></i>`;
-const pauseIcon = `<i class="fa-solid fa-pause"></i>`;
-const progressBarEl = $('.progress-bar');
-const progressEl = $('.progress');
-const timerEl = $('.timer');
-const progressBarDot = $('.progress-dot');
+var carouselInnerEl = document.querySelector('.carousel-inner');
+var nextEl = document.querySelector('.carousel-nav .next');
+var prevEl = document.querySelector('.carousel-nav .prev');
+
+// nextEl.addEventListener('click', function () {
+//   console.log('click');
+// });
+// prevEl.addEventListener('click', function () {
+//   console.log('click');
+//   if (position === 0) {
+//     position = -totalWidth + carouselWidth;
+//     carouselInnerEl.style.translate = `${-totalWidth + carouselWidth}px`;
+//     return;
+//   }
+//   position += carouselWidth;
+//   carouselInnerEl.style.translate = `${position}px`;
+// });
+
+// handle event
 const app = {
-  isPlaying: false,
+  totalWidth: 0,
+  carouselWidth: 0,
+  position: 0,
+  positionDrag: 0,
   isDrag: false,
-  progressBarWidth: progressBarEl.offsetWidth,
-  progressBarPercent: 0,
-  currentWidth: 0,
-  currentTimeline: 0,
-  song: {
-    path: './assets/audio/anh-tha.mp3',
+  currentPointX: 0,
+  isNext: false,
+  carouselItems: [
+    {
+      id: 1,
+      name: 'Image 1',
+      path: 'https://fastly.picsum.photos/id/450/1600/500.jpg?hmac=tuGbYs8ybCTcoW6hiv9Y08rCGNsP01ykdeMK6ROy2ik',
+    },
+    {
+      id: 2,
+      name: 'Image 2',
+      path: 'https://fastly.picsum.photos/id/955/1600/500.jpg?hmac=le9a1mNWTzQ3TuGulY2l6xDna368AE30wZMhvPKT4yQ',
+    },
+    {
+      id: 3,
+      name: 'Image 3',
+      path: 'https://fastly.picsum.photos/id/806/1600/500.jpg?hmac=1ijH1n9Z4Azdbadyg2xDgUYjwa2vPhRsNpSBp0kcWV4',
+    },
+  ],
+  render() {
+    var html = this.carouselItems.map(function (item) {
+      return `<div class="item" data-id=${item.id}>
+          <img
+            src="${item.path}"
+            alt="${item.name}"
+          />
+        </div>`;
+    });
+    carouselInnerEl.innerHTML = html;
   },
-  getTime(second) {
-    if (second) {
-      const mins = Math.floor(second / 60);
-      const seconds = Math.floor(second - mins * 60);
-      return `${mins < 10 ? '0' + mins : mins}:${seconds < 10 ? '0' + seconds : seconds}`;
-    }
-    if (second === 0) return '00:00';
-  },
-  handleEvents: function () {
+  handleEvents() {
+    debugger;
     const _this = this;
-    //document event
-
-    // play/pause song
-    playBtn.onclick = function () {
-      if (_this.isPlaying) {
-        audio.pause();
-      } else {
-        audio.play();
+    nextEl.onclick = function (e) {
+      const nextWidth = Math.abs(_this.position) + _this.carouselWidth;
+      if (nextWidth === _this.totalWidth) {
+        // _this.position = 0;
+        // carouselInnerEl.style.translate = `${_this.position}px`;
+        return;
       }
+      _this.position -= _this.carouselWidth;
+      carouselInnerEl.style.translate = `${_this.position}px`;
     };
-    // listen play/pause
-    audio.onplay = function () {
-      _this.isPlaying = true;
-      playBtn.innerHTML = pauseIcon;
-    };
-    audio.onpause = function () {
-      _this.isPlaying = false;
-      playBtn.innerHTML = playIcon;
-    };
-    // seeking
-    // show timeline seek
-    (progressBarEl.onmouseout = function (e) {
-      e.stopPropagation();
-      timerEl.style.display = 'none';
-    }),
-      (progressBarEl.onmousemove = function (e) {
-        var progressBarPercent = (e.offsetX / _this.progressBarWidth) * 100;
-        var currentTime = (progressBarPercent / 100) * audio.duration;
-        timerEl.style.display = 'block';
-        timerEl.style.left = e.offsetX + 'px';
-        timerEl.innerText = _this.getTime(currentTime);
-      });
-    // change time
-    progressBarEl.onmousedown = function (e) {
-      if (e.which === 1) {
-        _this.currentWidth = e.clientX;
-        _this.progressBarPercent = (e.offsetX / _this.progressBarWidth) * 100;
-        var currentTime = (_this.progressBarPercent / 100) * audio.duration;
-        audio.currentTime = currentTime;
-        progressEl.style.width = `${_this.progressBarPercent}%`;
+    prevEl.onclick = function (e) {
+      debugger;
+      if (_this.position === 0) {
+        // _this.position = _this.carouselWidth - _this.totalWidth;
+        // carouselInnerEl.style.translate = `${_this.carouselWidth - _this.totalWidth}px`;
+        return;
       }
+      _this.position += _this.carouselWidth;
+      carouselInnerEl.style.translate = `${_this.position}px`;
     };
-    // scroll timeline
-    document.onmousemove = function (e) {
-      if (_this.isDrag) {
-        debugger;
-        var startScroll = e.clientX - _this.currentWidth;
-        _this.currentTimeline =
-          (startScroll / _this.progressBarWidth) * 100 + _this.progressBarPercent;
-        if (_this.currentTimeline < 0) {
-          _this.currentTimeline = 0;
-        }
-        if (_this.currentTimeline > 100) {
-          _this.currentTimeline = 100;
-        }
-        var currentTime = (_this.currentTimeline / 100) * audio.duration;
-        progressEl.style.width = `${_this.currentTimeline}%`;
-        currentTimeEl.innerText = _this.getTime(currentTime);
-        // audio.currentTime = currentTime;
-      }
-    };
-
-    document.onmouseup = function (e) {
-      if (_this.isDrag) {
-        _this.isDrag = false;
-        _this.progressBarPercent = _this.currentTimeline;
-        var currentTime = (audio.duration * _this.currentTimeline) / 100;
-        currentTimeEl.innerText = _this.getTime(currentTime);
-        audio.currentTime = currentTime;
-      }
-    };
-    progressBarDot.onmousedown = function (e) {
-      e.stopPropagation();
+    carouselInnerEl.onmousedown = function (e) {
+      e.preventDefault();
       if (e.which === 1) {
         _this.isDrag = true;
-        _this.currentWidth = e.clientX;
+        _this.currentPointX = e.offsetX;
       }
     };
-
-    // update timeline
-    audio.ontimeupdate = function () {
-      if (audio.duration) {
-        var progressBarPercent = (audio.currentTime / audio.duration) * 100;
-        progressEl.style.width = `${progressBarPercent}%`;
-        currentTimeEl.innerText = _this.getTime(audio.currentTime);
+    document.onmousemove = function (e) {
+      e.preventDefault();
+      if (_this.isDrag) {
+        _this.positionDrag = 0;
+        _this.isNext = e.offsetX - _this.currentPointX < 0;
+        console.log(_this.isNext);
+        if (_this.isNext) {
+          var countWidth = Math.abs(e.offsetX - _this.currentPointX);
+          var currentPosition = 0;
+          currentPosition = countWidth;
+          _this.positionDrag = -currentPosition;
+          carouselInnerEl.style.translate = `${_this.positionDrag - _this.position}px`;
+          console.log((Math.abs(_this.positionDrag) / _this.carouselWidth) * 100);
+          if ((Math.abs(_this.positionDrag) / _this.carouselWidth) * 100 >= 20) {
+            _this.isDrag = false;
+            nextEl.click();
+          }
+          if (Math.abs(_this.positionDrag - _this.position) > _this.totalWidth) {
+            return;
+          }
+        }
       }
+      if (!_this.isDrag) return;
+      // _this.position -= e.offsetX - _this.currentPointX;
+      // _this.currentPointX = e.offsetX;
+      // carouselInnerEl.style.translate = `${_this.position}px`;
     };
-    //audio ended
-    audio.onended = function (e) {
-      debugger;
-      currentTimeEl.innerText = _this.getTime(0);
-      playBtn.innerHTML = playIcon;
-      _this.isPlaying = false;
-      _this.progressBarPercent = 0;
-      _this.currentTimeline = 0;
-      progressEl.style.width = `0%`;
-    };
-    // handle show timer
-    audio.onloadeddata = function (e) {
-      endTimeEl.innerText = _this.getTime(e.target.duration);
+    carouselInnerEl.onmouseup = function (e) {
+      e.preventDefault();
+      _this.isDrag = false;
     };
   },
-
-  loadSongInfo() {
-    audio.src = this.song.path;
-    currentTimeEl.innerHTML = this.getTime(0);
-  },
-  start() {
-    // load song
-    this.loadSongInfo();
-    // handle events
+  run() {
+    this.render();
+    this.carouselWidth = carouselInnerEl.clientWidth;
+    this.totalWidth = carouselInnerEl.children.length * this.carouselWidth;
     this.handleEvents();
   },
 };
-app.start();
+app.run();

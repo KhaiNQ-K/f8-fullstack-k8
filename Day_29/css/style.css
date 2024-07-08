@@ -1,80 +1,51 @@
-.container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-button {
-  outline: none;
-  border: none;
-  background: #fff;
+img {
+  max-width: 100%;
+  height: auto;
 }
-.audio-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  row-gap: 10px;
-}
-.btn {
+.carousel {
   position: relative;
-  width: 20px;
-  height: 20px;
+  overflow: hidden;
 }
-.play-btn,
-.pause-btn {
+.carousel .carousel-inner {
+  display: flex;
+  transition: translate 0.3s ease;
+}
+.carousel .carousel-inner > * {
+  flex-shrink: 0;
+  width: 100%;
+  cursor: pointer;
+}
+.carousel .carousel-nav span {
+  position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
+  transform: translateY(-50%);
   display: block;
-  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  background: gray;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.carousel .carousel-nav span.pre {
+  left: 5px;
   cursor: pointer;
 }
-.audio-player {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 10px;
-}
-.progress-bar {
-  position: relative;
-  width: 90%;
-  height: 10px;
-  background-color: #ccc;
-  border-radius: 999px;
+.carousel .carousel-nav span.next {
+  right: 5px;
   cursor: pointer;
 }
-.progress {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 0;
-  background: rgb(64, 64, 245);
-  border-radius: 999px;
-  cursor: pointer;
-}
-.progress-dot {
-  display: block;
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  top: -1.8px;
-  right: 0px;
-  translate: 50%;
-  border-radius: 50%;
-  background-color: red;
-  cursor: pointer;
-}
-.timer {
-  color: #fff;
-  background: #000;
-  font-size: 10px;
-  display: none;
-  position: absolute;
-  top: -140%;
-  left: 0;
-  translate: -50%;
-  padding: 2px;
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
