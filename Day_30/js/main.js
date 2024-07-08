@@ -38,7 +38,6 @@ const app = {
     // scroll timeline
     document.onmousemove = function (e) {
       if (_this.isDrag) {
-        debugger;
         _this.moveSpace = e.clientX - _this.initialClientX + _this.lastMoveSpace;
         var rate = (_this.moveSpace / _this.progressBarWidth) * 100;
 
