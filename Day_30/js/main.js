@@ -125,7 +125,6 @@ const app = {
     };
     //audio ended
     audio.onended = function (e) {
-      debugger;
       currentTimeEl.innerText = _this.getTime(0);
       playBtn.innerHTML = playIcon;
       _this.isPlaying = false;
