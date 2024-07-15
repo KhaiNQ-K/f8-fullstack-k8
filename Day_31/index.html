@@ -4,52 +4,332 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exercise 31</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <!-- FontAwesome -->
+    <!-- Fontawesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/grid.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <audio id="audio"></audio>
-    <div class="container">
-      <div class="audio-wrapper">
-        <div class="btn">
-          <button class="play-btn">
-            <i class="fa-solid fa-play"></i>
-          </button>
-        </div>
-        <div class="audio-player">
-          <span class="current-time"></span>
-          <div class="progress-bar">
-            <div class="progress">
-              <span class="progress-dot"></span>
-              <span class="timer"></span>
+    <header class="header">
+      <div class="container">
+        <div class="row justify-between items-center">
+          <div class="col-6">
+            <h1 class="header-title">Shopping Cart</h1>
+          </div>
+          <div class="col-6">
+            <div class="header-actions">
+              <div class="cart">
+                <button class="btn-cart ml-auto">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span class="cart-quantity">0</span>
+                </button>
+                <!-- Cart List -->
+                <div class="cart-list row justify-center items-center">
+                  <div class="cart-header col-12">
+                    <h3 class="cart-title">Danh sách giỏ hàng</h3>
+                  </div>
+                  <div class="cart-body col-12">
+                    <div class="header-cart-body">
+                      <div class="row items-center">
+                        <div class="col-5">
+                          <h4>Sản phẩm</h4>
+                        </div>
+                        <div class="col-2">
+                          <h4>Giá</h4>
+                        </div>
+                        <div class="col-2">
+                          <h4>Số lượng</h4>
+                        </div>
+                        <div class="col-2">
+                          <h4>Thành tiền</h4>
+                        </div>
+                        <div class="col-1">
+                          <h4>Thao tác</h4>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cart-body-content">
+                      <div class="row g-2 justify-center items-center">
+                        <div class="col-2">
+                          <img
+                            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8fDA%3D"
+                            alt=""
+                            class="img-cart"
+                          />
+                        </div>
+                        <div class="col-3">
+                          <div class="row items-center justify-center">
+                            <h3 class="cart-title">Product Title</h3>
+                          </div>
+                        </div>
+                        <div class="col-2">
+                          <p class="cart-price">$100</p>
+                        </div>
+                        <div class="col-2">
+                          <div class="row product-quantity">
+                            <button class="btn-quantity"><i class="fa-solid fa-minus"></i></button>
+                            <input type="number" class="quantity" value="1" min="1" max="10" />
+                            <button class="btn-quantity"><i class="fa-solid fa-plus"></i></button>
+                          </div>
+                        </div>
+                        <div class="col-2">10000</div>
+                        <div class="col-1">
+                          <button class="btn-delete"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cart-body-content">
+                      <div class="row g-2 justify-center items-center">
+                        <div class="col-2">
+                          <img
+                            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8fDA%3D"
+                            alt=""
+                            class="img-cart"
+                          />
+                        </div>
+                        <div class="col-3">
+                          <div class="row items-center justify-center">
+                            <h3 class="cart-title">Product Title</h3>
+                          </div>
+                        </div>
+                        <div class="col-2">
+                          <p class="cart-price">$100</p>
+                        </div>
+                        <div class="col-2">
+                          <div class="row product-quantity">
+                            <button class="btn-quantity"><i class="fa-solid fa-minus"></i></button>
+                            <input type="number" class="quantity" value="1" min="1" max="10" />
+                            <button class="btn-quantity"><i class="fa-solid fa-plus"></i></button>
+                          </div>
+                        </div>
+                        <div class="col-2">10000</div>
+                        <div class="col-1">
+                          <button class="btn-delete"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cart-body-content">
+                      <div class="row g-2 justify-center items-center">
+                        <div class="col-2">
+                          <img
+                            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8fDA%3D"
+                            alt=""
+                            class="img-cart"
+                          />
+                        </div>
+                        <div class="col-3">
+                          <div class="row items-center justify-center">
+                            <h3 class="cart-title">Product Title</h3>
+                          </div>
+                        </div>
+                        <div class="col-2">
+                          <p class="cart-price">$100</p>
+                        </div>
+                        <div class="col-2">
+                          <div class="row product-quantity">
+                            <button class="btn-quantity"><i class="fa-solid fa-minus"></i></button>
+                            <input type="number" class="quantity" value="1" min="1" max="10" />
+                            <button class="btn-quantity"><i class="fa-solid fa-plus"></i></button>
+                          </div>
+                        </div>
+                        <div class="col-2">10000</div>
+                        <div class="col-1">
+                          <button class="btn-delete"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 cart-footer">
+                    <div class="row g-4">
+                      <div class="col-6"></div>
+                      <div class="col-3">
+                        <h3 class="footer-title text-right">Tổng tiền</h3>
+                      </div>
+                      <div class="col-3">
+                        <h3 class="footer-title text-right">100000</h3>
+                      </div>
+                      <div class="col-3">
+                        <button class="btn-update-cart">Cập nhập giỏ hàng</button>
+                      </div>
+                      <div class="col-2">
+                        <button class="mr-auto btn-delete-cart">Xóa giỏ hàng</button>
+                        <!-- Delete Cart -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <span class="end-time"></span>
         </div>
       </div>
-      <div class="karaoke">
-        <button class="btn-karaoke">Hát karaoke</button>
-      </div>
-      <div class="modal">
-        <div class="container">
-          <div class="modal-header">
-            <h2>Karaoke</h2>
-            <button class="close-btn">
-              <!-- arrow down -->
-              <i class="fa-solid fa-chevron-down"></i>
-            </button>
+    </header>
+    <div class="main">
+      <div class="container">
+        <div class="row g-3 items-center justify-center">
+          <div class="col-12 text-center">
+            <h2>Product List</h2>
           </div>
-        </div>
-        <div class="container">
-          <div class="modal-content">
-            <div class="content"></div>
+          <div class="col-3">
+            <div class="product-card">
+              <div class="product-img">
+                <img
+                  src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8fDA%3D"
+                  alt=""
+                />
+              </div>
+              <div class="product-body">
+                <h3 class="product-title text-center">Product Title</h3>
+                <p class="product-desc text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, nam.
+                </p>
+              </div>
+              <div class="product-actions">
+                <div class="row g-3 justify-center items-center text-center">
+                  <div class="col-6 text-center">
+                    <span class="footer-title">Quantity</span>
+                  </div>
+                  <div class="col-6 text-center">
+                    <span class="footer-title">Price</span>
+                  </div>
+                  <div class="col-6">
+                    <div class="row product-quantity justify-center">
+                      <button class="btn-quantity"><i class="fa-solid fa-minus"></i></button>
+                      <input type="number" class="quantity" value="1" min="1" max="10" />
+                      <button class="btn-quantity"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                  </div>
+                  <div class="col-6 text-center">
+                    <p class="product-price">$100</p>
+                  </div>
+                  <div class="col-12 text-center">
+                    <button class="btn btn-add-cart mx-auto">Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="product-card">
+              <div class="product-img">
+                <img
+                  src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8fDA%3D"
+                  alt=""
+                />
+              </div>
+              <div class="product-body">
+                <h3 class="product-title text-center">Product Title</h3>
+                <p class="product-desc text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, nam.
+                </p>
+              </div>
+              <div class="product-actions">
+                <div class="row g-3 justify-center items-center text-center">
+                  <div class="col-6 text-center">
+                    <span class="footer-title">Quantity</span>
+                  </div>
+                  <div class="col-6 text-center">
+                    <span class="footer-title">Price</span>
+                  </div>
+                  <div class="col-6">
+                    <div class="row product-quantity justify-center">
+                      <button class="btn-quantity"><i class="fa-solid fa-minus"></i></button>
+                      <input type="number" class="quantity" value="1" min="1" max="10" />
+                      <button class="btn-quantity"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                  </div>
+                  <div class="col-6 text-center">
+                    <p class="product-price">$100</p>
+                  </div>
+                  <div class="col-12 text-center">
+                    <button class="btn btn-add-cart mx-auto">Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="product-card">
+              <div class="product-img">
+                <img
+                  src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8fDA%3D"
+                  alt=""
+                />
+              </div>
+              <div class="product-body">
+                <h3 class="product-title text-center">Product Title</h3>
+                <p class="product-desc text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, nam.
+                </p>
+              </div>
+              <div class="product-actions">
+                <div class="row g-3 justify-center items-center text-center">
+                  <div class="col-6 text-center">
+                    <span class="footer-title">Quantity</span>
+                  </div>
+                  <div class="col-6 text-center">
+                    <span class="footer-title">Price</span>
+                  </div>
+                  <div class="col-6">
+                    <div class="row product-quantity justify-center">
+                      <button class="btn-quantity"><i class="fa-solid fa-minus"></i></button>
+                      <input type="number" class="quantity" value="1" min="1" max="10" />
+                      <button class="btn-quantity"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                  </div>
+                  <div class="col-6 text-center">
+                    <p class="product-price">$100</p>
+                  </div>
+                  <div class="col-12 text-center">
+                    <button class="btn btn-add-cart mx-auto">Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="product-card">
+              <div class="product-img">
+                <img
+                  src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8fDA%3D"
+                  alt=""
+                />
+              </div>
+              <div class="product-body">
+                <h3 class="product-title text-center">Product Title</h3>
+                <p class="product-desc text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, nam.
+                </p>
+              </div>
+              <div class="product-actions">
+                <div class="row g-3 justify-center items-center text-center">
+                  <div class="col-6 text-center">
+                    <span class="footer-title">Quantity</span>
+                  </div>
+                  <div class="col-6 text-center">
+                    <span class="footer-title">Price</span>
+                  </div>
+                  <div class="col-6">
+                    <div class="row product-quantity justify-center">
+                      <button class="btn-quantity"><i class="fa-solid fa-minus"></i></button>
+                      <input type="number" class="quantity" value="1" min="1" max="10" />
+                      <button class="btn-quantity"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                  </div>
+                  <div class="col-6 text-center">
+                    <p class="product-price">$100</p>
+                  </div>
+                  <div class="col-12 text-center">
+                    <button class="btn btn-add-cart mx-auto">Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

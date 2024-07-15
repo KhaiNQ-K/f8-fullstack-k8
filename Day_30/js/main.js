@@ -84,19 +84,22 @@ const app = {
       timerEl.innerText = _this.getTime(currentTime);
     };
     // change time
-    progressBarEl.onmousedown = function (e) {
+    (progressBarEl.onclick = function (e) {
       e.stopPropagation();
-      if (e.which === 1) {
-        _this.isDrag = true;
-        _this.initialClientX = e.clientX;
-        _this.moveSpace = e.offsetX;
-        _this.lastMoveSpace = e.offsetX;
-        var rate = (e.offsetX / _this.progressBarWidth) * 100;
-        var currentTime = (rate / 100) * audio.duration;
-        audio.currentTime = currentTime;
-        progressEl.style.width = `${rate}%`;
-      }
-    };
+    }),
+      (progressBarEl.onmousedown = function (e) {
+        e.stopPropagation();
+        if (e.which === 1) {
+          _this.isDrag = true;
+          _this.initialClientX = e.clientX;
+          _this.moveSpace = e.offsetX;
+          _this.lastMoveSpace = e.offsetX;
+          var rate = (e.offsetX / _this.progressBarWidth) * 100;
+          var currentTime = (rate / 100) * audio.duration;
+          // audio.currentTime = currentTime;
+          progressEl.style.width = `${rate}%`;
+        }
+      });
     progressBarDot.onmousedown = function (e) {
       if (e.which === 1) {
         e.stopPropagation();
@@ -104,7 +107,14 @@ const app = {
         _this.initialClientX = e.clientX;
       }
     };
-
+    progressBarDot.onmousemove = function (e) {
+      e.stopPropagation();
+      var progressBarPercent = (e.clientX / _this.progressBarWidth) * 100;
+      var currentTime = (progressBarPercent / 100) * audio.duration;
+      timerEl.style.display = 'block';
+      timerEl.style.left = e.clientX - _this.initialClientX + _this.lastMoveSpace + 'px';
+      timerEl.innerText = _this.getTime(currentTime);
+    };
     // audio event handler
     // listen play/pause
     audio.onplay = function () {
