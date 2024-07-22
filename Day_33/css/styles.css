@@ -13,6 +13,10 @@
 .list-item.active {
   background: rgb(255, 111, 0);
 }
+.list-item.dragging {
+  opacity: 0.5;
+}
+
 .list-item.over {
   border: 2px dashed #000;
 }

@@ -1,45 +1,63 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-const listItemEl = $$('.list-item');
+const list = document.querySelector('.list');
+const items = list.querySelectorAll('.list-item');
 let draggedItem = null;
-const listEl = $('.list');
-Array.from(listItemEl).forEach((el) => {
-  el.addEventListener('dragstart', handleDragStart);
-  el.addEventListener('dragend', handleDragEnd);
-  el.addEventListener('dragover', handleDragOver);
-  el.addEventListener('dragleave', handleDragLeave);
-  el.addEventListener('dragenter', dragEnter);
-  el.addEventListener('drop', handleDrop);
-});
-function handleDragStart(e) {
-  draggedItem = this;
-}
-function handleDragEnd(e) {
-  setTimeout(() => {
+
+// Handle drag start
+items.forEach((item) => {
+  item.addEventListener('dragstart', (e) => {
+    draggedItem = e.target;
+    e.target.classList.add('dragging', 'over');
+  });
+
+  item.addEventListener('dragend', (e) => {
+    e.target.classList.remove('dragging', 'over');
     draggedItem = null;
-  }, 0);
-}
-function dragEnter(e) {
-  if (this !== draggedItem) {
-    this.classList.add('over');
-  }
-}
-function handleDragLeave(e) {
-  this.classList.remove('over');
-}
-function handleDragOver(e) {
+  });
+});
+
+// Handle drag over
+list.addEventListener('dragover', (e) => {
   e.preventDefault();
+  const draggingItem = document.querySelector('.dragging');
+  const afterElement = getDragAfterElement(list, e.clientY);
+  if (afterElement == null) {
+    list.appendChild(draggingItem);
+  } else {
+    list.insertBefore(draggingItem, afterElement);
+  }
+});
+
+// Handle drop
+list.addEventListener('drop', (e) => {
+  e.preventDefault();
+  const draggingItem = document.querySelector('.dragging');
+  const afterElement = getDragAfterElement(list, e.clientY);
+  if (afterElement == null) {
+    list.appendChild(draggingItem);
+  } else {
+    list.insertBefore(draggingItem, afterElement);
+  }
+  updateOrder(); // Update order after drop
+});
+
+// Get element to place the dragged item before
+function getDragAfterElement(container, y) {
+  const draggableElements = [...container.querySelectorAll('.list-item:not(.dragging)')];
+  return draggableElements.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element;
 }
 
-function handleDrop(e) {
-  e.preventDefault();
-  if (this !== draggedItem) {
-    this.classList.remove('over');
-
-    let temp = document.createElement('div');
-    this.parentNode.insertBefore(temp, this);
-    this.parentNode.insertBefore(this, draggedItem);
-    this.parentNode.insertBefore(draggedItem, temp);
-    this.parentNode.removeChild(temp);
-  }
+// Update order function
+function updateOrder() {
+  const orderedItems = [...list.querySelectorAll('.list-item')].map((item) => item.textContent);
 }
