@@ -59,5 +59,5 @@ function getDragAfterElement(container, y) {
 
 // Update order function
 function updateOrder() {
-  const orderedItems = [...list.querySelectorAll('.list-item')].map((item) => item.textContent);
+  [...list.querySelectorAll('.list-item')].map((item) => item.textContent);
 }
