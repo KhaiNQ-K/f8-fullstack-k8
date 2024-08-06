@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 37</title>
+    <style>
+      .main {
+        margin: 0 auto;
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: 100vh;
+      }
+      .btn {
+        cursor: pointer;
+        font-size: 1.5rem;
+        display: block;
+        padding: 15px 20px;
+        border: none;
+        background: red;
+        color: #fff;
+        border-radius: 999px;
+        margin-bottom: 20px;
+      }
+      .btn:hover {
+        background: green;
+      }
+      span.text-red {
+        color: Red;
+        font-size: 1.1rem;
+      }
+      span.text-green {
+        color: green;
+        font-size: 1.1rem;
+      }
+      .message-box {
+        width: 100%;
+        padding: 20px;
+        border: 1px solid green;
+        display: none;
+      }
+      .message-box.message-block {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1>Bạn muốn làm gì? Hãy nói cho F8 biết</h1>
+      <button class="btn">Bấm vào đây để nói</button>
+      <span class="text-red"></span>
+      <div class="message-box">
+        <span class="message"></span>
+      </div>
+    </div>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
