@@ -1,5 +1,5 @@
 import { render } from './core.js';
-import TodoApp from './TodoApp.js';
+import TodoApp from './component/TodoApp.js';
 
 const app = new TodoApp();
 // render(app.render(), document.getElementById('app'));

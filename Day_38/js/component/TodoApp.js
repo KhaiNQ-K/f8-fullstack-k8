@@ -1,47 +1,49 @@
 import todoApi from '../api/todoApi.js';
-import { Component, createElement } from '../core.js';
 import CompletedButton from './CompletedButton.js';
 import TodoFilter from './TodoFilter.js';
 import TodoForm from './TodoForm.js';
 import TodoList from './TodoList.js';
+import { createElement, render, Component } from '../core.js';
 
 class TodoApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       todos: [],
-      searchQuery: '',
       isModalOpen: false,
+      isEdit: false,
+      todo: {},
+      searchQuery: '',
+      isShowCompleted: false,
     };
-
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.addTodo = this.addTodo.bind(this);
+    // this.addTodo = this.addTodo.bind(this);
   }
   componentDidMount() {
     this.fetchTodos();
-    document.body.appendChild(this.modal.render());
+    // document.body.appendChild(this.modal.render());
   }
   openModal() {
     this.setState({ isModalOpen: true });
   }
 
   closeModal() {
-    this.setState({ isModalOpen: false });
+    this.setState({ isModalOpen: false, todo: {}, isEdit: false });
   }
 
   async fetchTodos() {
     try {
       const todoList = await todoApi.getAll();
-      this.setState({ todoList });
+      this.setState({ todos: todoList });
     } catch (e) {
       console.log('Fail to fetch todos', e);
     }
   }
-  async addTodo(newTodoText) {
+  async handleAddTodo(newTodoText) {
     try {
       const data = {
-        newTodoText,
+        name: newTodoText,
         completed: false,
       };
       const newTodo = await todoApi.add(data);
@@ -49,61 +51,83 @@ class TodoApp extends Component {
     } catch (e) {
       console.log('Fail to add todo', e);
     }
+    this.closeModal();
   }
-  async editTodo(id, newTodoText) {
-    try {
-      const data = {
-        newTodoText,
-      };
-      await todoApi.update(id, data);
-      this.setState({
-        todos: this.state.todos.map((todo) => (todo.id === id ? { ...todo, newTodoText } : todo)),
-      });
-    } catch (e) {
-      console.log('Fail to edit todo', e);
-    }
-  }
-  handleSearchChange(searchText) {
-    debugger;
-    this.setState({ searchQuery: searchText });
-  }
-  getFilteredTodos() {
-    debugger;
-    const { todos, searchQuery } = this.state;
-    let filteredTodos = todos;
-    if (searchQuery) {
-      filteredTodos = todos.filter((todo) => todo.name.includes(searchQuery.trim()));
-    }
-    return filteredTodos;
-  }
+
   async deleteTodo(id) {
     try {
       await todoApi.delete(id);
-      this.setState({
-        todos: this.state.todos.filter((todo) => todo.id !== id),
-      });
+      const todos = [...this.state.todos];
+      const index = todos.findIndex((todo) => todo.id === id);
+      todos.splice(index, 1);
+      this.setState({ todos });
     } catch (e) {
       console.log('Fail to delete todo', e);
     }
   }
-  async handleCompletedTodo(id, completed) {
-    const data = {
-      completed,
-    };
-    await todoApi.update(id, data);
-    this.setState({
-      todos: this.state.todos.map((todo) => (todo.id === id ? { ...todo, completed } : todo)),
-    });
+  handleSearchChange(searchText) {
+    this.setState({ searchQuery: searchText });
   }
-  openModal() {
-    this.modal.openModal();
+  getFilteredTodos() {
+    const { todos, searchQuery } = this.state;
+    let filteredTodos = todos;
+    if (searchQuery) {
+      filteredTodos = todos.filter((todo) => todo.name.toLowerCase().includes(searchQuery.trim()));
+    }
+    return filteredTodos.filter((todo) => !todo.completed);
   }
-  handleShowCompleted(isShow) {
-    this.element.querySelector('.todo-list--completed').style.display = isShow ? 'block' : 'none';
+  getCompletedTodos() {
+    const { todos, searchQuery } = this.state;
+    let completedTodos = todos.filter((todo) => todo.completed);
+    if (searchQuery) {
+      completedTodos = completedTodos.filter((todo) =>
+        todo.name.toLowerCase().includes(searchQuery.trim())
+      );
+    }
+    return completedTodos;
+  }
+  handleCompletedTodo(id, isCompleted) {
+    try {
+      const oldTodo = this.state.todos.find((todo) => todo.id === id);
+      todoApi.update(id, { ...oldTodo, completed: isCompleted });
+      this.setState({
+        todos: this.state.todos.map((todo) =>
+          todo.id === id ? { ...todo, completed: isCompleted } : todo
+        ),
+      });
+    } catch (e) {
+      console.log('Fail to update todo', e);
+    }
+  }
+  handleShowCompleted() {
+    this.setState({ isShowCompleted: !this.state.isShowCompleted });
+  }
+  handleEditTodo(id) {
+    this.openModal();
+    const todo = this.state.todos.find((todo) => todo.id === id);
+    this.setState({ todo, isEdit: true });
+  }
+  async handleUpdateTodo(newTodoText) {
+    debugger;
+    try {
+      const oldTodo = this.state.todo;
+      const data = {
+        ...oldTodo,
+        name: newTodoText,
+      };
+      const newTodo = await todoApi.update(this.state.todo.id, data);
+      this.setState({
+        todos: this.state.todos.map((todo) => (todo.id === newTodo.id ? newTodo : todo)),
+      });
+    } catch (e) {
+      console.log('Fail to update todo', e);
+    }
+    this.closeModal();
   }
   render() {
+    debugger;
     const filteredTodos = this.getFilteredTodos();
-    const completedTodos = this.state.todos.filter((x) => x.completed);
+    const completedTodos = this.getCompletedTodos();
     return createElement(
       'div',
       { className: 'todos-app' },
@@ -116,35 +140,43 @@ class TodoApp extends Component {
       createElement(
         'div',
         { className: 'todo-header' },
-        createElement(TodoFilter, { onSearch: this.handleSearchChange.bind(this) }),
-        createElement('button', { className: 'btn btn-add', onclick: this.openModal }, 'Add Todos')
+        createElement(TodoFilter, {
+          onSearch: this.handleSearchChange.bind(this),
+          searchQuery: this.state.searchQuery,
+        }),
+        createElement(
+          'button',
+          { className: 'btn btn-add', onclick: this.openModal.bind(this) },
+          'Add Todos'
+        )
       ),
       this.state.isModalOpen &&
         createElement(TodoForm, {
-          onSubmit: this.addTodo,
+          onUpdate: this.handleUpdateTodo.bind(this),
+          onAdd: this.handleAddTodo.bind(this),
           onCancel: this.closeModal,
-          onInputChange: this.handleInputChange.bind(this),
-          inputValue: this.state.newTodo,
+          isEdit: this.state.isEdit,
+          todo: this.state.todo,
+        }),
+      createElement(TodoList, {
+        todos: filteredTodos,
+        onDelete: this.deleteTodo.bind(this),
+        onCompleted: this.handleCompletedTodo.bind(this),
+        onEdit: this.handleEditTodo.bind(this),
+      }),
+      createElement(CompletedButton, {
+        showCompleted: this.handleShowCompleted.bind(this),
+        count: completedTodos.length,
+        isShowCompleted: this.state.isShowCompleted,
+      }),
+      this.state.isShowCompleted &&
+        createElement(TodoList, {
+          className: 'todo-list--completed',
+          todos: completedTodos,
+          onDelete: this.deleteTodo.bind(this),
+          onCompleted: this.handleCompletedTodo.bind(this),
+          onEdit: this.handleEditTodo.bind(this),
         })
-      // createElement(TodoList, {
-      //   todos: filteredTodos,
-      //   onDelete: this.deleteTodo,
-      //   onCompleted: this.handleCompletedTodo,
-      //   onEdit: this.editTodo,
-      //   onAdd: this.addTodo,
-      // }),
-      // createElement(CompletedButton, {
-      //   showCompleted: this.handleShowCompleted,
-      //   count: completedTodos.length,
-      // }),
-      // createElement(TodoList, {
-      //   className: 'todo-list--completed',
-      //   todos: completedTodos,
-      //   onDelete: this.deleteTodo,
-      //   onCompleted: this.handleCompletedTodo,
-      //   onEdit: this.editTodo,
-      //   onAdd: this.addTodo,
-      // })
     );
   }
 }
