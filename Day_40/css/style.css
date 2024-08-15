@@ -1,0 +1,73 @@
+.logo-link {
+  display: inline-block;
+  width: 50px;
+}
+.post-list {
+  min-height: 100vh;
+}
+.loading-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: #000;
+  opacity: 0.5;
+  display: none;
+}
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: #fff;
+  /* Animate */
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff;
+  opacity: 1; /* Firefox */
+}
+.search-form {
+  background: #3a3b3c;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+.form-control:focus {
+  background: #3a3b3c;
+}
+a.active {
+  border-bottom: 3px solid rgb(77, 77, 246);
+}
+a.active i {
+  color: rgb(77, 77, 246);
+}
+.main {
+  background: #18191a;
+}
+.card {
+  background: #242526;
+}
+
+.user-icon {
+  width: 70px;
+  height: 70px;
+}
+.user-icon img {
+  height: 100%;
+}
