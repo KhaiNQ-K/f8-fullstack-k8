@@ -1,0 +1,41 @@
+:root {
+  --header-bg: #212f48;
+  --main-bg: #152033;
+  --text-color: #fff;
+  --text-gray: #a6acd1;
+  --font-family: 'Inter', sans-serif;
+}
+body {
+  font-size: 1.6rem;
+  font-family: var(--font-family);
+}
+#app {
+  padding-top: 30px;
+  background: var(--main-bg);
+  min-height: 100vh;
+}
+.card {
+  background: var(--header-bg);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 30px;
+  color: var(--text-color);
+}
+input.form-control {
+  background: transparent;
+  color: var(--text-color);
+  border: none;
+  border-bottom: 1px solid var(--text-gray);
+  border-radius: 0;
+}
+input.form-control:focus {
+  background: transparent;
+  color: var(--text-color);
+  border: none;
+  border-bottom: 1px solid var(--text-gray);
+  border-radius: 0;
+  outline: none;
+}
+input.form-control::placeholder {
+  color: var(--text-gray);
+}
