@@ -1,5 +1,5 @@
-import { SERVER_API } from '../config.js';
-import { httpClient } from '../http-client.js';
+import { SERVER_API } from '../core/config.js';
+import { httpClient } from '../core/http-client.js';
 import { ACCESS_TOKEN, STATUS_CODE } from '../utils.js';
 
 const fetchClient = httpClient.create({ baseURL: SERVER_API });

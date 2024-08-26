@@ -1,5 +1,4 @@
 import { authApi } from './api/auth-api.js';
-import { requestRegister } from './http.js';
 
 const handleSignUp = async (e) => {
   e.preventDefault();

@@ -1,4 +1,3 @@
-import { requestGetBlogs } from './http.js';
 import { blogApi } from './api/blog-api.js';
 import { ACCESS_TOKEN } from './utils.js';
 let params = {
