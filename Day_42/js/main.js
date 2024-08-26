@@ -1,3 +1,4 @@
+import { authApi } from './api/auth-api.js';
 import { blogApi } from './api/blog-api.js';
 import { ACCESS_TOKEN } from './utils.js';
 let params = {
@@ -28,61 +29,61 @@ const renderBlogs = async () => {
 const createBlogTemplate = (blog, userInfo) => {
   const blogWrap = document.createElement('div');
   blogWrap.innerHTML = `
-  <div class="card mx-auto" style="color: #fff">
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="user-info d-flex gap-4">
-              <div class="img-wrap">
-                <img
-                  class=""
-                  src="https://pixner.net/circlehub/main/assets/images/avatar-1.png"
-                  alt=""
-                />
-              </div>
-              <div class="d-flex flex-wrap">
-                <span class="username d-block w-100 fs-3">${escapeHTML(userInfo.name)}</span>
-                <span class="user-status text-success">Online</span>
-              </div>
-            </div>
-            <div class="other">
-              <button><i class="fa-solid fa-ellipsis"></i></button>
-            </div>
+    <div class="card mx-auto" style="color: #fff">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="user-info d-flex gap-4">
+          <div class="img-wrap">
+            <img
+              class=""
+              src="https://pixner.net/circlehub/main/assets/images/avatar-1.png"
+              alt=""
+            />
           </div>
-          <div class="content fs-2 mt-4">
-            <div class="post-content line-clamp mb-4">
-              ${escapeHTML(blog.content)}
-            </div>
-            <div class="post-media">
-              <img
-                class="img-fluid"
-                style="width: 100%; object-fit: cover"
-                src="https://pixner.net/circlehub/main/assets/images/post-img-1.png"
-                alt=""
-              />
-            </div>
-          </div>
-          <div class="footer">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="other">
-                <button><i class="fa-solid fa-thumbs-up"></i></button>
-                <button><i class="fa-regular fa-comment"></i></button>
-                <button><i class="fa-solid fa-share"></i></button>
-              </div>
-              <div class="time-create">
-                <span class="fs-9">${formatDate(blog.createdAt)}</span>
-              </div>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="like-info d-flex align-items-center gap-3">
-                <span class="like-count">1.2k</span>
-                <span class="like-text">Likes</span>
-              </div>
-              <div class="like-info d-flex align-items-center gap-3">
-                <span class="like-count">1.2k</span>
-                <span class="like-text">Comments</span>
-              </div>
-            </div>
+          <div class="d-flex flex-wrap">
+            <span class="username d-block w-100 fs-3">${escapeHTML(userInfo.name)}</span>
+            <span class="user-status text-success">Online</span>
           </div>
         </div>
+        <div class="other">
+          <button><i class="fa-solid fa-ellipsis"></i></button>
+        </div>
+      </div>
+      <div class="content fs-2 mt-4">
+        <div class="post-content line-clamp mb-4">
+          ${escapeHTML(blog.content)}
+        </div>
+        <div class="post-media">
+          <img
+            class="img-fluid"
+            style="width: 100%; object-fit: cover"
+            src="https://pixner.net/circlehub/main/assets/images/post-img-1.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="footer">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="other">
+            <button><i class="fa-solid fa-thumbs-up"></i></button>
+            <button><i class="fa-regular fa-comment"></i></button>
+            <button><i class="fa-solid fa-share"></i></button>
+          </div>
+          <div class="time-create">
+            <span class="fs-9">${formatDate(blog.createdAt)}</span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="like-info d-flex align-items-center gap-3">
+            <span class="like-count">1.2k</span>
+            <span class="like-text">Likes</span>
+          </div>
+          <div class="like-info d-flex align-items-center gap-3">
+            <span class="like-count">1.2k</span>
+            <span class="like-text">Comments</span>
+          </div>
+        </div>
+      </div>
+    </div>
   `;
   return blogWrap;
 };
@@ -91,8 +92,8 @@ const renderHasToken = async () => {
   renderProfile();
 };
 const renderBlogForm = async () => {
+  const blogFormWrapEl = document.querySelector('.blog-form-wrapper');
   try {
-    const blogFormWrapEl = document.querySelector('.blog-form-wrapper');
     const { accessToken } = JSON.parse(localStorage.getItem(ACCESS_TOKEN));
     if (accessToken) {
       blogFormWrapEl.innerHTML = `
@@ -127,6 +128,7 @@ const renderBlogForm = async () => {
       blogFormWrapEl.querySelector('.blog-form').addEventListener('submit', handleAddBlog);
     }
   } catch (e) {
+    blogFormWrapEl.innerHTML = ``;
     console.log(e);
   }
 };
@@ -134,6 +136,7 @@ const renderProfile = () => {
   const actionEl = document.querySelector('.actions');
   try {
     const { accessToken } = JSON.parse(localStorage.getItem(ACCESS_TOKEN));
+    let isToggle = false;
     if (accessToken) {
       actionEl.innerHTML = `
       <div class="dropdown">
@@ -149,13 +152,12 @@ const renderProfile = () => {
             <i class="fa-solid fa-user"></i>
           </a>
           <ul
-            class="dropdown-menu active"
+            class="dropdown-menu "
             id="navbarNavDarkDropdown"
-            style="display: block"
           >
             <li>
               <a
-                class="dropdown-item d-flex gap-3 logout align-items-center justify-content-between"
+                class="dropdown-item d-flex gap-3 align-items-center justify-content-between"
                 href="#"
               >
                 Profile
@@ -173,6 +175,18 @@ const renderProfile = () => {
             </li>
           </ul>
         </div>`;
+      actionEl
+        .querySelector('a[data-bs-target="#navbarNavDarkDropdown"]')
+        .addEventListener('click', (e) => {
+          isToggle = !isToggle;
+          e.preventDefault();
+          actionEl.querySelector('.dropdown-menu').classList.toggle('active', isToggle);
+          actionEl.querySelector('.dropdown-menu').style.display = isToggle ? 'none' : 'block';
+          if (isToggle) {
+          }
+        });
+      const logoutEl = actionEl.querySelector('.logout');
+      logoutEl.addEventListener('click', handleLogout);
     }
   } catch (e) {
     actionEl.innerHTML = `
@@ -273,7 +287,17 @@ const addInfinityScrollEvent = () => {
   });
   observer.observe(blogListElEnd);
 };
-
+const handleLogout = async (e) => {
+  console.log('handleLogout');
+  e.preventDefault();
+  try {
+    await authApi.logout();
+    localStorage.removeItem(ACCESS_TOKEN);
+    renderHasToken();
+  } catch (e) {
+    console.log(e);
+  }
+};
 renderHasToken();
 
 addInfinityScrollEvent();

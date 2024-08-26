@@ -1,3 +1,4 @@
+import { ACCESS_TOKEN } from '../utils.js';
 import fetchClient from './fetchClient.js';
 
 export const authApi = {
@@ -13,5 +14,9 @@ export const authApi = {
     // return response;
     const url = '/auth/register';
     return fetchClient.post(url, payload);
+  },
+  logout: () => {
+    const url = '/auth/logout';
+    return fetchClient.post(url);
   },
 };

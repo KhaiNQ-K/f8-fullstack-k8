@@ -3,8 +3,10 @@ import { authApi } from './api/auth-api.js';
 const handleSignUp = async (e) => {
   e.preventDefault();
   const msgEl = e.target.querySelector('.msg');
+  const loadingEl = document.querySelector('.loading');
   try {
     const payload = Object.fromEntries(new FormData(e.target));
+    loadingEl.classList.add('active');
     const response = await authApi.register(payload);
     msgEl.innerHTML = '';
     if (response) {
@@ -16,6 +18,8 @@ const handleSignUp = async (e) => {
   } catch (e) {
     console.log(e.message);
     msgEl.innerHTML = `<div class="alert alert-danger text-center fs-Day_42">${e.message}</div>`;
+  } finally {
+    loadingEl.classList.remove('active');
   }
 };
 const signUp = () => {
