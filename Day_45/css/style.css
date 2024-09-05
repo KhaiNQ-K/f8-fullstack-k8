@@ -1,0 +1,152 @@
+:root {
+  --header-bg: #212f48;
+  --main-bg: #152033;
+  --text-color: #fff;
+  --text-gray: #a6acd1;
+  --font-family: 'Inter', sans-serif;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  background: var(--main-bg);
+  color: var(--text-color);
+  font-size: 1.6rem;
+  font-family: var(--font-family);
+}
+.header {
+  background: var(--header-bg);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.search-input {
+  flex: 1 1 auto;
+}
+.search-input .search-icon-wrapper {
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+}
+.form-control {
+  font-weight: 600;
+  height: 100%;
+  font-size: 1.6rem;
+  background: transparent;
+  color: var(--text-gray);
+}
+.search-input input {
+  padding-left: 50px;
+}
+.form-control::placeholder {
+  color: var(--text-gray);
+}
+.form-control:focus,
+.form-control:active {
+  background: transparent;
+  color: var(--text-gray);
+}
+.nav-link {
+  font-size: 2.4rem;
+}
+.count {
+  left: -10px;
+  top: -5px;
+}
+.main {
+  margin-top: 40px;
+}
+.main .side-bar {
+  background: var(--header-bg);
+  padding: 15px;
+  border-radius: 10px;
+}
+.side-bar .img-wrap {
+  width: 60px;
+}
+.divider {
+  margin-block: 30px;
+  border-bottom: 1px solid var(--text-gray);
+  opacity: 0.2;
+}
+.btn-submit {
+  margin-left: auto;
+  margin-top: 20px;
+  width: 120px;
+}
+.card {
+  margin-top: 30px;
+  background: var(--header-bg);
+  border-radius: 5px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+.other button {
+  padding: 10px;
+  font-size: 2rem;
+  color: var(--text-color);
+}
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3; /* add this line */
+  -webkit-box-orient: vertical;
+  box-orient: vertical; /* add this line for compatibility */
+  overflow: hidden;
+}
+form .form-control {
+  height: auto;
+}
+.dropdown-menu {
+  padding: 5px;
+  background: var(--header-bg);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.dropdown-menu a {
+  font-size: 1.5rem;
+  color: #fff;
+}
+.dropdown-menu a:hover {
+  background: transparent;
+  color: blue;
+}
+.blog-list-end {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  position: relative;
+  height: 10px;
+}
+.blog-list-end .loader {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  animation: spin 2s linear infinite;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.blog-list-end .loader.loading {
+  display: block;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes auth-loading {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
