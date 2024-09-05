@@ -28,7 +28,7 @@ export const pattern = {
   emailPattern:
     /\w(?=[^@]{3,29}@)((\.|-)\w+|\w+)*@[a-zA-Z0-9](-[a-zA-Z0-9]|[a-zA-Z0-9])+(\.[a-zA-Z0-9](-[a-zA-Z0-9]|[a-zA-Z0-9])+){1,2}/g,
   youtubeUrlPattern: /(https?:\/\/(www\.)?(youtube\.com|youtu\.be)\/[^\s]+)/g,
-  phoneNumberPattern: /^0[0-9]{9,10}/g,
+  phoneNumberPattern: /(0|\+84)\d{9,10}/g,
   imageUrlPattern:
     /(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+\.(jpg|jpeg|png|gif)/g,
   linkUrlPattern: /https?:\/\/(www\.|ww2\.)?([\w-]+(\.[\w-]+)+)[^\s]*/g,
