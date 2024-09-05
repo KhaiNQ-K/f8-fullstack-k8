@@ -41,9 +41,17 @@ const createBlogTemplate = (blog, userInfo) => {
 };
 const handleShowBlogDetail = () => {
   const blogListEl = document.querySelector('.blog-list');
-  const blogTitle = blogListEl.querySelector('.blog-title');
+  const blogTitleEls = blogListEl.querySelectorAll('.blog-title');
+  blogTitleEls.forEach((el) => {
+    el.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const blogId = el.dataset.id;
+      await renderBlogDetail(blogId);
+    });
+  });
+};
+const renderBlogDetail = async (blogId) => {
   const appEl = document.querySelector('.app');
-  const blogId = blogTitle.dataset.id;
   const blogDetailEl = document.createElement('div');
   blogDetailEl.classList.add('blog-detail', 'mt-5');
   blogDetailEl.innerHTML = `
@@ -53,18 +61,15 @@ const handleShowBlogDetail = () => {
           </b-col>
         </b-row>
   `;
-  blogTitle.addEventListener('click', async (e) => {
-    e.preventDefault();
-    const {
-      data: { data: blogDetail },
-    } = await blogApi.getDetail(blogId);
-    blogDetailEl.innerHTML += templateString.blogTemplateItem(blogDetail, blogDetail.userId, true);
-    appEl.innerHTML = '';
-    appEl.appendChild(blogDetailEl);
-    const backToHome = blogDetailEl.querySelector('.btn-back');
-    backToHome.addEventListener('click', () => {
-      renderBlogList();
-    });
+  const {
+    data: { data: blogDetail },
+  } = await blogApi.getDetail(blogId);
+  blogDetailEl.innerHTML += templateString.blogTemplateItem(blogDetail, blogDetail.userId, true);
+  appEl.innerHTML = '';
+  appEl.appendChild(blogDetailEl);
+  const backToHome = blogDetailEl.querySelector('.btn-back');
+  backToHome.addEventListener('click', () => {
+    renderBlogList();
   });
 };
 const renderHasToken = async () => {
