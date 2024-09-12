@@ -30,7 +30,6 @@ class Router {
     });
   }
   renderComponent(Component, { queryString, url, hashString, data } = {}) {
-    debugger;
     const appContainer = document.querySelector('#app');
     appContainer.innerHTML = '';
     if (Component.name === 'NotFound') {
