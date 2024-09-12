@@ -17,7 +17,7 @@ export const routes = [
     path: '/product/:id',
     component: ProductDetail,
     beforeEnter: (params) => {
-      const productId = parseInt(params.id, 10);
+      const productId = parseInt(params.data.id, 10);
       const productExists = data.some((product) => product.id === productId);
 
       return productExists; // Return true if the product exists, false otherwise
