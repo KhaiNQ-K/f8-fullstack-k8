@@ -11,7 +11,7 @@ export const Product = () => {
         .map(
           (product) => `
             <div class="card ${productStyles.product_card} text-center" style="width: 18rem;">
-              <a href="/product/${product.id}">
+              <a href="/product/${product.id}" data-navigo>
                 <img 
                   src="${getProductThumb(product)}" 
                   class="card-img-top img-fluid ${productStyles.img}" 
@@ -19,7 +19,7 @@ export const Product = () => {
                 ">
               </a>
               <div class="card-body">
-                <a href="/product/${product.id}">
+                <a href="/product/${product.id}" data-navigo>
                   <h5 class="card-title">${product.productName}</h5>
                 </a>
                 <p class="card-text">${product.description}</p>
@@ -27,7 +27,8 @@ export const Product = () => {
               <p class="card-text text-danger fw-bold fs-6 ${productStyles.price} mx-3">
                 ${product.price} VNĐ
               </p>
-              <a href="/product/${product.id}" class="btn btn-primary ">Chi tiết</a>
+              <a href="/product/${product.id}" data-navigo
+               class="btn btn-primary ">Chi tiết</a>
             </div>
           `
         )
