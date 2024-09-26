@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { STORAGE_KEY } from '../constants/storage-key';
 
 const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
@@ -32,9 +33,11 @@ axiosClient.interceptors.response.use(
 
 export const requestAPIKey = async () => {
   try {
-    const response = await axiosClient.get(`/api-key?email=${import.meta.env.VITE_APP_EMAIL}`);
+    const { email } = JSON.parse(localStorage.getItem('userInfo'));
+    if (!email) return;
+    const response = await axiosClient.get(`/api-key?email=${email}`);
     if (response.data) {
-      localStorage.setItem('apiKey', JSON.stringify(response.data.apiKey));
+      localStorage.setItem(STORAGE_KEY.API_KEY, JSON.stringify(response.data.apiKey));
     }
   } catch (err) {
     console.log(err);

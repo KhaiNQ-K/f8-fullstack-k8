@@ -10,6 +10,10 @@ const Todos = () => {
   const [loading, setLoading] = useState(false);
   const handleSubmitForm = async (payload) => {
     try {
+      if (!payload) {
+        toast.warning('Vui lòng nhập todo');
+        return;
+      }
       setLoading(true);
       const { data, message } = await todoApi.addTodo({ todo: payload });
       setTodos([data, ...todos]);
@@ -24,7 +28,7 @@ const Todos = () => {
     try {
       if (payload) {
         setLoading(true);
-        const { data } = await todoApi.getTodos({ q: payload });
+        const { data } = await todoApi.getTodos({ q: payload.toLowerCase() });
         setTodos(data?.listTodo);
         setLoading(false);
       } else {
@@ -75,7 +79,7 @@ const Todos = () => {
         const newTodos = todos.filter((todo) => todo._id !== id);
         setTodos(newTodos);
         setLoading(false);
-        toast.error(message);
+        toast.success(message);
       }
     } catch (err) {
       toast.error('Có lỗi xảy ra khi xoá todo');
