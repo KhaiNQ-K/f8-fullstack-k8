@@ -8,12 +8,15 @@ import theme from './theme.js';
 import AuthProvider from './provider/AuthProvider.jsx';
 import { Bounce, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CartProvider from './provider/CartProvider.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AuthProvider>
-        <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
         <ToastContainer
           position="top-right"
           autoClose={1000}

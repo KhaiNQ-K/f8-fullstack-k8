@@ -1,7 +1,12 @@
+import { useCartStore } from '@/hooks/useCartStore';
 import { formatCurrency } from '@/utils/formatNumber';
 import { Box, Button, Paper, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 const ProductItem = ({ product }) => {
+  const { addToCart } = useCartStore();
+  const handleAddCart = () => {
+    addToCart(product);
+  };
   return (
     <Paper elevation={1}>
       <Box padding={1}>
@@ -15,7 +20,7 @@ const ProductItem = ({ product }) => {
             {formatCurrency(product.price)}
           </Box>
 
-          <Button sx={{ bgcolor: 'blue.main', color: 'white' }} fullWidth>
+          <Button sx={{ bgcolor: 'blue.main', color: 'white' }} fullWidth onClick={handleAddCart}>
             <Typography variant="body" component={'p'}>
               Thêm vào giỏ hàng
             </Typography>

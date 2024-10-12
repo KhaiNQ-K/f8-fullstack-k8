@@ -5,23 +5,25 @@ import { createContext, useEffect, useState } from 'react';
 export const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
-  const [cart, setCart, resetCart] = useStorage(STORAGE_KEY.CART, []);
+  const [cartList, setCartList, resetCart] = useStorage(STORAGE_KEY.CART, []);
   const addToCart = (product) => {
-    setCart((cart) => {
+    setCartList((cart) => {
       const newCart = [...cart];
-      const productCart = newCart.find((x) => x._id === product._id);
-      if (productCart) {
-        productCart.orderQuantity++;
+      let productIdx = newCart.findIndex((x) => x._id === product._id);
+      if (productIdx != -1) {
+        newCart[productIdx].orderQuantity++;
+        newCart[productIdx].quantity--;
       } else {
-        newCart.push({ ...productCart, orderQuantity: 1 });
+        productIdx = newCart.push({ ...product, orderQuantity: 1 }) - 1;
       }
-      productCart.totalPrice = productCart.orderQuantity * productCart.price;
+      newCart[productIdx].totalPrice =
+        newCart[productIdx].orderQuantity * newCart[productIdx].price;
       return newCart;
     });
   };
 
   const removeCart = (id) => {
-    setCart((cart) => {
+    setCartList((cart) => {
       const newCart = [...cart];
       const index = newCart.findIndex((x) => x._id === id);
       if (index > -1) {
@@ -32,9 +34,9 @@ const CartProvider = ({ children }) => {
   };
   useEffect(() => {
     setLoading(false);
-  }, [cart]);
+  }, [cartList]);
   return (
-    <CartContext.Provider value={{ cart, addToCart, resetCart, removeCart, loading }}>
+    <CartContext.Provider value={{ cartList, addToCart, resetCart, removeCart, loading }}>
       {children}
     </CartContext.Provider>
   );

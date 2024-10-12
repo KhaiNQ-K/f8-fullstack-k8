@@ -46,7 +46,7 @@ const Header = () => {
               color="inherit"
             >
               <Typography ariant="h6" component="div" sx={{ flexGrow: 1 }} className="mr-3">
-                {authData?.userInfo.name}
+                {authData?.userInfo?.name}
               </Typography>
               <AccountCircle />
             </IconButton>

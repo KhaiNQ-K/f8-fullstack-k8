@@ -23,7 +23,6 @@ axiosClient.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     if (error?.response.status === 401 && !originalRequest?._retry) {
-      debugger;
       originalRequest.sent = true;
       originalRequest._retry = true;
       const newApiKey = await requestAPIKey();

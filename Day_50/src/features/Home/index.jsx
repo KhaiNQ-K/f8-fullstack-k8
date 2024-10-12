@@ -1,7 +1,10 @@
 import Header from '@/components/Header';
-import { Box, Container, Typography } from '@mui/material';
+import { useCartStore } from '@/hooks/useCartStore';
+import { Box, Typography } from '@mui/material';
+import CartFeature from '../Cart';
 import ProductFeature from '../Products';
 function Home() {
+  const { cartList } = useCartStore();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Header />
@@ -17,6 +20,7 @@ function Home() {
         <Box mt={4} sx={{ width: '100%' }}>
           <ProductFeature />
         </Box>
+        {cartList.length > 0 && <CartFeature />}
       </Box>
     </Box>
   );
