@@ -1,45 +1,15 @@
-import { Box, Container } from '@mui/material';
-import ToggleColorMode from './components/ToggleColorMode';
-
+import { Route, Routes } from 'react-router-dom';
+import BoardPage from './pages/Board/BoardPage';
+import Login from './pages/Auth/Login';
+import AuthMiddleware from '@/middleware/AuthMiddleware';
 function App() {
   return (
-    <Container
-      maxWidth={false}
-      disableGutters
-      sx={{
-        height: '100vh',
-      }}
-    >
-      <Box
-        sx={{
-          bgcolor: 'primary.light',
-          width: '100%',
-          height: (theme) => `${theme.trello.headerHeight}`,
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <ToggleColorMode />
-      </Box>
-      <Box
-        sx={{
-          bgcolor: 'primary.dark',
-          width: '100%',
-          height: (theme) => `${theme.trello.boardBarHeight}`,
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      ></Box>
-      <Box
-        sx={{
-          bgcolor: 'primary.main',
-          width: '100%',
-          height: ({ trello }) => `calc(100vh - ${trello.headerHeight} - ${trello.boardBarHeight})`,
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      ></Box>
-    </Container>
+    <Routes>
+      <Route element={<Login />} path="/login"></Route>
+      <Route element={<AuthMiddleware />} path="/">
+        <Route element={<BoardPage />} index></Route>
+      </Route>
+    </Routes>
   );
 }
 

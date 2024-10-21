@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axiosClient from './axiosClient';
 
 export const authApi = {
   login(email) {
-    return axios.get(`/api-key?email=${email}`);
+    return axiosClient.get(`/api-key?email=${email}`);
   },
 };

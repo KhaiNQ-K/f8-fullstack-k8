@@ -8,12 +8,9 @@ const axiosClient = axios.create({
   },
 });
 axiosClient.interceptors.request.use((config) => {
-  const authData = JSON.parse(localStorage.getItem(STORAGE_KEY.USER_INFO));
-  if (authData) {
-    const { apiKey } = authData;
-    if (apiKey) {
-      config.headers['X-Api-Key'] = apiKey;
-    }
+  const apiKey = JSON.parse(localStorage.getItem(STORAGE_KEY.API_KEY));
+  if (apiKey) {
+    config.headers['X-Api-Key'] = apiKey;
   }
   return config;
 });
@@ -27,9 +24,7 @@ axiosClient.interceptors.response.use(
       originalRequest._retry = true;
       const newApiKey = await requestAPIKey();
       if (newApiKey) {
-        const { email } = JSON.parse(localStorage.getItem(STORAGE_KEY.USER_INFO));
-        const newAuthData = { apiKey: newApiKey, email };
-        localStorage.setItem(STORAGE_KEY.USER_INFO, JSON.stringify(newAuthData));
+        localStorage.setItem(STORAGE_KEY.API_KEY, JSON.stringify(newApiKey));
         originalRequest.headers['X-Api-Key'] = newApiKey;
         return axiosClient(originalRequest);
       }
@@ -40,11 +35,13 @@ axiosClient.interceptors.response.use(
 
 export const requestAPIKey = async () => {
   try {
-    const { userInfo } = JSON.parse(localStorage.getItem(STORAGE_KEY.USER_INFO));
-    if (!userInfo.email) return;
-    const response = await axiosClient.get(`/api-key?email=${userInfo.email}`);
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY.USER_INFO));
+    console.log(data);
+    if (!data.email) return;
+    const response = await axiosClient.get(`/api-key?email=${data.email}`);
     return response.data.apiKey;
   } catch (err) {
     console.log(err);
   }
 };
+export default axiosClient;

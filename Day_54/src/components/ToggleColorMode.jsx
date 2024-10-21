@@ -14,6 +14,7 @@ function ToggleColorMode() {
         borderRadius: '7px',
         border: '1px solid',
         borderColor: 'initial',
+        color: '#fff',
       }}
       onClick={handleToggleMode}
     >
