@@ -1,0 +1,47 @@
+{
+  "HomePage": {
+    "Contact": {
+      "Title": "Social contact"
+    },
+    "Tooltip": "123",
+    "Skills": {
+      "Title": "My skills",
+      "Work": {
+        "Label": "Web developer",
+        "Value": "REST API, React.js, Next.js, Redux, Context, CSS3, HTML5, UI/UX, Figma, Photoshop..."
+      },
+      "Other": {
+        "Label": "Other skills",
+        "Value": "Relatively good research and search skills. Working thinking, good teamwork skills compared to age."
+      }
+    },
+    "History": {
+      "Title": "Histories",
+      "First": "One of junior high school",
+      "Second": "Other Junior high school",
+      "Thirth": "Other high school",
+      "Fourth": "College studies"
+    },
+    "SelfProject": {
+      "Title": "Self project",
+      "Snippet": {
+        "PFirst": "A small project completed within a day",
+        "PSecond": "A simple website that allows you to create and share code snippets. Using HTML, CSS, JS and custom elements."
+      },
+      "Blog": {
+        "PFirst": "A bigger project done in three days",
+        "PSecond": "A personal blog website with posts about programming and learning. Using React.js."
+      },
+      "20f8": {
+        "PFirst": "A fun project made in a day",
+        "PSecond": "A puzzle game based on the 2048 game. Using Next.js and Tailwind CSS."
+      }
+    },
+    "Hobby": {
+      "Title": "My hobbies",
+      "First": "Enjoy relaxing music, rap music from Đen Vâu and other artists,…",
+      "Second": "Read books, learn more about new programming languages. Currently, I am self-studying Python",
+      "Thirth": "Follow the technology trends, news about famous products like Iphone, Huawei, GoogleAI,…"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "HomePage": {
+    "Contact": {
+      "Title": "Thông tin liên hệ"
+    },
+    "Tooltip": "123",
+    "Skills": {
+      "Title": "Các kỹ năng của tôi",
+      "Work": {
+        "Label": "Kỹ năng làm việc",
+        "Value": "REST API, React.js, Next.js, Redux, Context, CSS3, HTML5, UI/UX, Figma, Photoshop..."
+      },
+      "Other": {
+        "Label": "Các kỹ năng khác",
+        "Value": "Kỹ năng nghiên cứu và tìm kiếm tương đối tốt. Tư duy làm việc, kỹ năng làm việc nhóm tốt so với độ tuổi."
+      }
+    },
+    "History": {
+      "Title": "Lịch sử",
+      "First": "Trường Trung học Cơ sở nào đó",
+      "Second": "Các trường Trung học Cơ sở khác",
+      "Thirth": "Trường Trung học Phổ thông khác",
+      "Fourth": "Học đại học"
+    },
+    "SelfProject": {
+      "Title": "Các dự án cá nhân",
+      "Snippet": {
+        "PFirst": "Một dự án nhỏ hoàn thành trong vòng một ngày",
+        "PSecond": "Một trang web đơn giản cho phép tạo và chia sẻ các đoạn code. Sử dụng HTML, CSS, JS và custom elements."
+      },
+      "Blog": {
+        "PFirst": "Một dự án được thực hiện trong ba ngày",
+        "PSecond": "Một trang web blog social với các bài viết về lập trình và học tập. Sử dụng React.js."
+      },
+      "20f8": {
+        "PFirst": "Một dự án game được làm trong một ngày",
+        "PSecond": "Một trò chơi giải đố dựa trên trò chơi 2048. Sử dụng Next.js và Tailwind CSS."
+      }
+    },
+    "Hobby": {
+      "Title": "Sở thích cá nhân",
+      "First": "Thưởng thức nhạc nhẹ, nhạc rap của Đen Vâu và các nghệ sĩ khác,…",
+      "Second": "Đọc sách, học hỏi thêm về các ngôn ngữ lập trình mới mẻ. Hiện tại, tôi đang tự học Python",
+      "Thirth": "Theo dõi các xu hướng công nghệ, tin tức về các sản phẩm nổi tiếng như Iphone, Huawei, GoogleAI,…"
+    }
+  }
+}
